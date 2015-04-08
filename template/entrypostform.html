@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja" class="dropzone">
+<head>
+  <meta charset="utf-8">
+  <title>《ブログ名》 新規投稿</title>
+  <link href="《テンプレート》/base-admin.css" rel="stylesheet">
+  <link href="《テンプレート》/blog.css" rel="stylesheet">
+  <link href="《テンプレート》/post.css" rel="stylesheet">
+  <link rel="icon" href="《テンプレート》/favicon.png" type="image/png">
+  <link rel="index" href="《URL》">
+
+  <script src="《jQuery》"></script>
+</head>
+<body>
+
+
+<header class="main-header">
+<h1 class="main-title">《ブログ名》</h1>
+</header>
+
+<article class="main-contents">
+<div class="tab">
+<ul>
+  <li class="tab-selected" id="tab-main">新規投稿</li>
+  <li id="tab-preview">プレビュー</li>
+  <li id="tab-thumbnail">サムネイル</li>
+  <li id="tab-setting">設定</li>
+</ul>
+<section id="tab-main-section" class="tab-selected">
+<form id="entrypost" action="《URL》?action=entrypost" method="POST">
+<div class="form-line"><label for="title">タイトル</label><input type="text" id="title" name="title" value="《&記事タイトル》"></div>
+<div class="form-line"><label for="category">カテゴリ</label><input type="text" id="category" class="candidate-dropdown" name="category" value="《&記事カテゴリ》" autocomplete="off"><ul class="candidate-list">《カテゴリ候補》</ul></div>
+<div class="form-line"><textarea name="body" spellcheck="false">《記事本文》</textarea></div>
+<div class="form-line"><input type="submit" name="submit" value="新規投稿"></div>
+<input type="hidden" name="entry-status" value="">
+</form></section>
+
+<section id="tab-preview-section">
+<iframe id="preview-iframe" src="《テンプレート》/preview.html" width="980" height="0" frameborder="0" scrolling="no"></iframe>
+</section>
+
+<section id="tab-thumbnail-section">
+<button id="thumbnail-make" class="submit">サムネイルを作成する <span id="thumbnail-exists"></span></button>
+<div id="thumbnail-image-wrapper" data-w="《サムネイル横幅》" data-h="《サムネイル縦幅》"></div>
+<div id="thumbnail-preview-wrapper"></div>
+</section>
+
+<section id="tab-setting">
+<table id="setting">
+<tr><th>記事の公開</th><td><select data-selected="" id="setting-entry-status"><option value="公開">公開する</option><option value="非公開">非公開にする</option></select></td></tr>
+</table>
+</section>
+</div>
+</article>
+
+<link rel="stylesheet" href="《テンプレート》/jquery.jcrop.css">
+<link rel="stylesheet" href="《テンプレート》/jquery.nprogress.css">
+<script src="《テンプレート》/jquery.selection.js" charset="utf-8"></script>
+<script src="《テンプレート》/jquery.ajaxqueue.js" charset="utf-8"></script>
+<script src="《テンプレート》/jquery.nprogress.js" charset="utf-8"></script>
+<script src="《テンプレート》/jquery.jcrop.js" charset="utf-8"></script>
+<script src="《テンプレート》/marked.js" charset="utf-8"></script>
+<script src="《テンプレート》/post.js" charset="utf-8"></script>
+
+<script>
+var ファイルサイズ制限  = 《ファイルサイズ制限》;
+var $ファイルサイズ制限 = "《$ファイルサイズ制限》";
+var POST制限  = 《POST制限》;
+var $POST制限 = "《$POST制限》";
+</script>
+<script src="《テンプレート》/dndupload.js" charset="utf-8"></script>
+
+
+</body>
+</html>

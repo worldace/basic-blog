@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>デザイン見本</title>
+  <link href="base-blog.css" rel="stylesheet">
+  <link href="blog.css" rel="stylesheet">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+<header class="main-header">
+<h1 class="main-title">デザイン見本</h1>
+</header>
+<article class="main-contents">
+
+<!--
+<article class="article">
+<header class="article-header"><h1 class="article-title"></h1></header>
+<div class="contents">
+
+</div></article>
+ -->
+
+
+<article class="article">
+<header class="article-header"><h1 class="article-title">クラス</h1></header>
+<div class="contents">
+
+<h2>文字色クラス</h2>
+<p>文字色を指定するクラス。<kbd>&lt;span class=&quot;red&quot;&gt;文字色が赤&lt;/span&gt;</kbd>のように使用する。</p>
+<table>
+<caption>文字色クラス</caption>
+<tr><th>クラス</th><th>説明</th></tr>
+<tr><td>red</td><td><span class="red">文字色が赤</span></td></tr>
+<tr><td>green</td><td><span class="green">文字色が緑</span></td></tr>
+<tr><td>blue</td><td><span class="blue">文字色が青</span></td></tr>
+<tr><td>yellow</td><td><span class="yellow">文字色が黄</span></td></tr>
+<tr><td>pink</td><td><span class="pink">文字色がピンク</span></td></tr>
+<tr><td>black</td><td><span class="black">文字色が黒</span></td></tr>
+<tr><td>white</td><td><span class="white">文字色が白</span></td></tr>
+</table>
+
+<h2>背景色クラス</h2>
+<p>背景色を指定するクラス。<kbd>&lt;p class=&quot;b-red&quot;&gt;背景色が赤&lt;/p&gt;</kbd>のように使用する。</p>
+<table>
+<caption>背景色クラス</caption>
+<tr><th>クラス</th><th>説明</th></tr>
+<tr><td>b-red</td><td class="b-red">背景色が赤</td></tr>
+<tr><td>b-green</td><td class="b-green">背景色が緑</td></tr>
+<tr><td>b-blue</td><td class="b-blue">背景色が青</td></tr>
+<tr><td>b-yellow</td><td class="b-yellow">背景色が黄</td></tr>
+<tr><td>b-pink</td><td class="b-pink">背景色がピンク</td></tr>
+<tr><td>b-black</td><td class="b-black">背景色が黒</td></tr>
+<tr><td>b-white</td><td class="b-white">背景色が白</td></tr>
+</table>
+
+<h2>文字の大きさクラス</h2>
+<p>文字の大きさを指定するクラス。<kbd>&lt;p class=&quot;big&quot;&gt;文字が大きい&lt;/p&gt;</kbd>のように使用する。</p>
+<table>
+<caption>文字の大きさクラス</caption>
+<tr><th>クラス</th><th>説明</th></tr>
+<tr><td>big</td><td class="big">文字が大きい</td></tr>
+<tr><td>mini</td><td class="mini">文字が小さい</td></tr>
+<tr><td>mininote</td><td class="mininote">文字が小さい＋文字が薄い</td></tr>
+</table>
+
+<h2>文字揃えクラス</h2>
+<p>文字を揃えるクラス。<kbd>&lt;p class=&quot;center&quot;&gt;文字をセンタリング&lt;/p&gt;</kbd>のように使用する。</p>
+
+<table style="width: 200px;">
+<caption>文字揃えクラス</caption>
+<tr><th>クラス</th><th>説明</th></tr>
+<tr><td>left</td><td class="left">左揃え</td></tr>
+<tr><td>center</td><td class="center">中央揃え</td></tr>
+<tr><td>right</td><td class="right">右揃え</td></tr>
+</table>
+
+<h2>表示クラス</h2>
+
+<table>
+<caption>表示クラス</caption>
+<tr><th>クラス</th><th>説明</th></tr>
+<tr><td>inline</td><td class="left">インラインとして表示する</td></tr>
+<tr><td>block</td><td class="left">ブロックとして表示する。ブロックはセンタリングされる</td></tr>
+<tr><td>inline-block</td><td class="left">インラインブロックとして表示する</td></tr>
+<tr><td>none</td><td class="left">表示しない</td></tr>
+</table>
+<p>インラインとインラインボックスは横方向へ並んでいきます。ブロックは縦方向へ並んでいきます。<br>
+CSSの専門的なことなので、詳しくは検索して調べてください。</p>
+
+
+<h2>機能性クラス</h2>
+<table class="sortable">
+<caption>機能性クラス</caption>
+<tr><th>クラス</th><th>説明</th></tr>
+<tr><td>popup</td><td class="left">画像を<a href="eyecatch.png" target="_blank" class="popup">ポップアップ</a>させる。imgタグやaタグに付与する</td></tr>
+<tr><td>sortable</td><td class="left">テーブルをソート可能にする<br>※tableタグ限定で、このテーブルのように1行目がthであること</td></tr>
+</table>
+
+<h2>情報ボックス</h2>
+<p>注意や警告を表示する情報ボックス。インラインブロックです。</p>
+<p class="infobox-green">&lt;p class=&quot;infobox-green&quot;&gt;&lt;/p&gt;</p><br>
+<p class="infobox-blue">&lt;p class=&quot;infobox-blue&quot;&gt;&lt;/p&gt;</p><br>
+<p class="infobox-yellow">&lt;p class=&quot;infobox-yellow&quot;&gt;&lt;/p&gt;</p><br>
+<p class="infobox-red">&lt;p class=&quot;infobox-red&quot;&gt;&lt;/p&gt;</p><br>
+
+<h2>バッジ</h2>
+<p>注目する文字を表示するバッジ。インラインです。</p>
+
+<p><span class="badge-blue">&lt;span class=&quot;badge-blue&quot;&gt;&lt;/span&gt;</span></p>
+<p><span class="badge-green">&lt;span class=&quot;badge-green&quot;&gt;&lt;/span&gt;</span></p>
+<p><span class="badge-red">&lt;span class=&quot;badge-red&quot;&gt;&lt;/span&gt;</span></p>
+<p><span class="badge-black">&lt;span class=&quot;badge-black&quot;&gt;&lt;/span&gt;</span></p>
+<p><span class="badge-gold">&lt;span class=&quot;badge-gold&quot;&gt;&lt;/span&gt;</span></p>
+<p><span class="badge-silver">&lt;span class=&quot;badge-silver&quot;&gt;&lt;/span&gt;</span></p>
+<p><span class="badge-bronze">&lt;span class=&quot;badge-bronze&quot;&gt;&lt;/span&gt;</span></p>
+
+
+<h2>クラスの複数指定</h2>
+<p>クラスは空白で区切ると複数指定することができます。</p>
+
+<pre><span class="pre-title">クラスを複数指定する例</span>
+<span class="sc2">&lt;<span class="kw2">span</span> <span class="kw3">class</span>=<span class="st0">&quot;red b-red&quot;</span>&gt;</span>文字色と背景色を同時に赤色にする<span class="sc2">&lt;/<span class="kw2">span</span>&gt;</span></pre>
+</div></article>
+
+
+<article class="article">
+<header class="article-header"><h1 class="article-title">タグ</h1></header>
+<div class="contents">
+
+<h2>インラインタグ</h2>
+<table>
+<caption>インラインタグ一覧</caption>
+<tr><th>タグ</th><th>説明</th></tr>
+<tr><td>&lt;b&gt;&lt;/b&gt;</td><td class="left"><b>強調</b></td></tr>
+<tr><td>&lt;em&gt;&lt;/em&gt;</td><td class="left"><em>強調</em></td></tr>
+<tr><td>&lt;strong&gt;&lt;/strong&gt;</td><td class="left"><strong>強調(赤字)</strong></td></tr>
+<tr><td>&lt;mark&gt;&lt;/mark&gt;</td><td class="left"><mark>マーカー</mark></td></tr>
+<tr><td>&lt;code&gt;&lt;/code&gt;</td><td class="left"><code>print "Hello World";</code></td></tr>
+<tr><td>&lt;kbd&gt;&lt;/kbd&gt;</td><td class="left"><kbd>Ctrl＋K</kbd></td></tr>
+<tr><td>&lt;var&gt;&lt;/var&gt;</td><td class="left"><var>$_SERVER['HTTP_HOST']</var></td></tr>
+</table>
+
+<h2>&lt;img&gt;</h2>
+
+<img src="eyecatch.png" width="480" height="270">
+
+<p>記事内の最上位にあるimgはブロックになり、センタリングされて表示されます。<br>
+imgをインラインとして表示したい場合は<code>div</code>等の中に入れるとよいでしょう。</p>
+
+
+<h2>&lt;h2&gt;&lt;/h2&gt;</h2>
+
+<p>記事のメインタイトルがH1なので、記事内の見出しはH2から始めることにします。</p>
+
+<h3>&lt;h3&gt;&lt;/h3&gt;</h3>
+
+<p>H3見出し</p>
+
+<h2>&lt;ul&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;</h2>
+
+
+<ul>
+  <li>1番目の項目</li>
+  <li>2番目の項目</li>
+  <li>3番目の項目<ul><li>3-1番目の項目</li><li>3-2番目の項目</li></ul></li>
+  <li>4番目の項目</li>
+</ul>
+
+<h2>&lt;ol&gt;&lt;li&gt;&lt;/li&gt;&lt;/ol&gt;</h2>
+<ol>
+  <li>1番目の項目</li>
+  <li>2番目の項目</li>
+  <li>3番目の項目<ol><li>3-1番目の項目</li><li>3-2番目の項目</li></ol></li>
+  <li>4番目の項目</li>
+</ol>
+
+<h2>&lt;table&gt;&lt;/table&gt;</h2>
+
+<table>
+<tr><th>-</th><th>G1</th><th>G2</th><th>G3</th></tr>
+<tr><td>日本</td><td>23</td><td>36</td><td>67</td></tr>
+<tr><td>イギリス</td><td>33</td><td>45</td><td>67</td></tr>
+<tr><td>アイルランド</td><td>12</td><td>7</td><td>45</td></tr>
+<tr><td>フランス</td><td>27</td><td>26</td><td>58</td></tr>
+<tr><td>アメリカ</td><td>110</td><td>140</td><td>205</td></tr>
+</table>
+
+<p>テーブルはセンタリングされます。中身のテキストもセンタリングされます。<br>
+中身を左揃えにしたい場合は<code>&lt;td class=&quot;left&quot;&gt;</code>としてください。</p>
+
+
+<h2>&lt;hr&gt;</h2>
+<hr>
+<h2>&lt;blockquote&gt;&lt;/blockquote&gt;</h2>
+
+<blockquote>ここには引用文が入ります。ここには引用文が入ります。ここには引用文が入ります。ここには引用文が入ります。</blockquote>
+
+<h2>&lt;pre&gt;&lt;span class=&quot;pre-title&quot;&gt;&lt;/span&gt;&lt;/pre&gt;</h2>
+<pre><span class="pre-title">HTML</span>
+<span class="sc0">&lt;!DOCTYPE html&gt;</span>
+<span class="sc2">&lt;<span class="kw2">html</span> <span class="kw3">lang</span>=<span class="st0">&quot;ja&quot;</span>&gt;</span>
+<span class="sc2">&lt;<span class="kw2">head</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">meta</span> <span class="kw3">charset</span>=<span class="st0">&quot;utf-8&quot;</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">title</span>&gt;</span>デザイン見本<span class="sc2">&lt;/<span class="kw2">title</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">href</span>=<span class="st0">&quot;base-blog.css&quot;</span> <span class="kw3">rel</span>=<span class="st0">&quot;stylesheet&quot;</span>&gt;</span>
+  <span class="sc2">&lt;<span class="kw2">link</span> <span class="kw3">href</span>=<span class="st0">&quot;blog.css&quot;</span> <span class="kw3">rel</span>=<span class="st0">&quot;stylesheet&quot;</span>&gt;</span>
+
+  <span class="sc2">&lt;<span class="kw2">script</span> <span class="kw3">src</span>=<span class="st0">&quot;jquery-1.9.1.js&quot;</span>&gt;&lt;/<span class="kw2">script</span>&gt;</span>
+<span class="sc2">&lt;/<span class="kw2">head</span>&gt;</span>
+ 
+</pre>
+<p>ツールの<a href="../index.php?action=tool&tool=codehighlight" target="_blank">コードハイライト</a>を利用して作ります。<br>
+タイトルをクリックすると中身をテキストファイルとしてダウンロードできます。(タイトル名.txt)<br>
+タイトルに拡張子をつければ、その拡張子でダウンロードさせることができます。</p>
+
+</div></article>
+
+
+<article class="article">
+<header class="article-header"><h1 class="article-title">ソーシャル埋め込み</h1></header>
+<div class="contents">
+
+<p>各サイトで発行されるHTMLタグを直接貼り付けるだけで利用できます。</p>
+
+<h2>YouTube埋め込み</h2>
+<iframe width="420" height="315" src="http://www.youtube.com/embed/RHketKmIyJ8" frameborder="0" allowfullscreen></iframe>
+
+<h2>Twitter埋め込み</h2>
+<blockquote class="twitter-tweet" lang="ja"><p>下館バイパスのバイパス区間7.6キロメートル全線が10月7日(火)に開通します。&#10;&#10; <a href="http://t.co/QW5IIgKTGZ">http://t.co/QW5IIgKTGZ</a></p>&mdash; 道路開通情報 (@road_open) <a href="https://twitter.com/road_open/status/512973401837682688">2014, 9月 19</a></blockquote> <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<h2>Yahoo地図埋め込み</h2>
+<script type='text/javascript' charset='UTF-8' src='http://map.yahooapis.jp/MapsService/embedmap/V2/?cond=lat%3A40.60312376%3Blon%3A140.46392167%3Bac%3A02202%3Bz%3A13%3Bfa%3Apa%3Bei%3AUTF-8%3Bp%3A%E9%9D%92%E6%A3%AE%E7%9C%8C%E5%BC%98%E5%89%8D%E5%B8%82%3Bdatum%3Awgs%3Bs%3A14155071448045acc697c187ff0038228bb19bc481%3Blayer%3Apa%3Bspotnote%3Aon%3Bplacegenre%3Aaddress%3Bopacity%3A0.25%3BclassName%3Ayolp-tilelayer%3B&amp;p=%E9%9D%92%E6%A3%AE%E7%9C%8C%E5%BC%98%E5%89%8D%E5%B8%82&amp;ac=02202&amp;zoom=13&amp;lat=40.60312376&amp;lon=140.46392167&amp;pluginid=pa&amp;z=13&amp;mode=map&amp;active=true&amp;layer=pa&amp;home=on&amp;hlat=40.60312376&amp;hlon=140.46392167&amp;pointer=off&amp;pan=off&amp;ei=utf8&amp;v=3&amp;datum=wgs&amp;width=480&amp;height=360&amp;device=pc&amp;isleft='></script>
+
+</div></article>
+
+
+
+<article class="article">
+<header class="article-header"><h1 class="article-title">おわりに</h1></header>
+<div class="contents">
+
+<p>ここで紹介したデザインは全て<a href="blog.css">blog.css</a>に記載されています</p>
+
+</div></article>
+
+</article>
+
+
+<script src="blog.js" charset="utf-8"></script>
+
+</body>
+</html>

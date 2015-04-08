@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html><body>
+<script>
+window.onload = function(){
+    if(window.opener.closed){
+        setTimeout(function(){ location.href = '《記事URL》'; }, 0);
+    }
+    else{
+        window.opener.location.href = '《記事URL》';
+        setTimeout(function(){ location.href = '《URL》?action=entryeditform&id=《記事ID》'; }, 0);
+    }
+};
+</script>
+</body></html>

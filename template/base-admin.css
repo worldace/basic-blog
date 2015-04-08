@@ -1,0 +1,43 @@
+@charset "utf-8";
+/*************************************************
+管理系ページの基礎スタイル
+*************************************************/
+
+
+
+/*** 共通 ***/
+*{ box-sizing: border-box; }
+a{ text-decoration: none; }
+a:link{ color: #0099cc; }
+a:visited{ color: #ff4444; }
+a:hover{ color: #4488ee; }
+img{ border: none; }
+[width],[height]{ box-sizing: content-box; } /* width,height属性が存在する場合は、こうしないとborderやpaddingを付与した時に中身が縮小される */
+
+
+
+/*** 構造 ***/
+body{
+    background: #fff repeat-x url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAABiCAIAAAAA3h6ZAAAAVUlEQVRYhe3QwQ0AIAgEQY/Yf3nUYwvyIWwO3xcyqzLzfL8bEYW1pL09VgK9XZiOWtf+ZN29a2ol1e1RSXV7VFLdHpVUt0cl1e1RSXV7VFLdHpVz3A+FswP+aeLfiAAAAABJRU5ErkJggg==);
+    margin: 0;
+    padding: 0 25px;
+    font-family: Meiryo,sans-serif;
+}
+body > .main-header{
+    width: 100%;
+}
+body > .main-contents{
+    display: block;
+    width: 100%;
+}
+
+
+/*** メインタイトル ***/
+.main-title{
+    letter-spacing: -1px;
+    color: #e87830;
+    font-size: 36px;
+    font-family: Georgia,"Times New Roman",Times, "MS PGothic", sans-serif;
+    font-weight: normal;
+}
+

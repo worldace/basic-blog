@@ -1,0 +1,116 @@
+@charset "utf-8";
+/*************************************************
+アップロード系ページの基礎スタイル
+*************************************************/
+
+
+
+/*** 共通 ***/
+*{ box-sizing: border-box; }
+a{ text-decoration: none; }
+a:link { color: blue; }
+a:visited { color: red; }
+a:hover,a:active { color: #0099cc; }
+[width],[height]{ box-sizing: content-box; } /* width,height属性が存在する場合は、こうしないとborderやpaddingを付与した時に中身が縮小される */
+
+
+
+/*** 構造 ***/
+body {
+    margin: 0 0 30px 0;
+    padding: 0;
+    font-family: Meiryo, sans-serif;
+}
+
+header{
+    margin: 0 0 1.5em 0;
+    background-color: #444;
+    color: #fff;
+    padding: 0.5em 1em;
+    font-size: 16px;
+    letter-spacing: -1px;
+}
+header > a:link, header > a:visited, header > a:hover{
+    color: #fff;
+}
+
+
+
+/*** テーブル基本デザイン ***/
+table {
+    width: auto;
+    border-spacing: 0;
+    font-size: 14px;
+    margin: 55px auto;
+}
+table caption{
+    padding: 5px 5px 5px 20px;
+    font-size: 20px;
+    letter-spacing: -2px;
+}
+table th {
+    color: #fff;
+    padding: 8px 15px;
+    background-color: #595959;
+    background: linear-gradient(to bottom, #595959 0%, #595959 60%, #222222 60%, #222222 100%);
+    height: 20px;
+    font-weight: bold;
+    border-left: 1px solid #111;
+    border-top: 1px solid #111;
+    border-bottom: 1px solid #111;
+    text-align: center;
+}
+table th:first-child {
+    border-radius: 6px 0 0 0;
+}
+table th:last-child {
+    border-radius: 0 6px 0 0;
+    box-shadow: 2px 0 1px rgba(0,0,0,0.1);
+}
+table tr td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #111;
+    border-left: 1px solid #111;
+    text-align: center;
+    font-size: 14px;
+    font-family: "Calibri", "Lucida Grande", Verdana, Arial, "MS Serif", "Meiryo", sans-serif;
+    letter-spacing: 0;
+    vertical-align: middle;
+}
+table tr {
+    background: #fff;
+}
+table tr td:last-child {
+    border-right: 1px solid #111;
+    box-shadow: 2px 0px 1px rgba(0,0,0,0.1);
+}
+table tr:last-child td {
+    box-shadow: 2px 2px 1px rgba(0,0,0,0.1);
+}
+table tr:last-child td:first-child {
+    border-radius: 0 0 0 6px;
+}
+table tr:last-child td:last-child {
+    border-radius: 0 0 6px 0;
+}
+
+
+
+/*** クラス ***/
+
+.nofile{
+    color: #999;
+}
+.today{
+    color: #888;
+    font-weight: bold;
+}
+.Sun{
+    background: linear-gradient(to right, #ffeeee 0%, #fff 66%);
+}
+.Sat{
+    background: linear-gradient(to right, #eeeeff 0%, #fff 66%);
+}
+.delete-selected{
+    background-color: #ffeeee;
+}

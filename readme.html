@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Basic Blog 説明書</title>
+  <link href="template/base-blog.css" rel="stylesheet">
+  <link href="template/blog.css" rel="stylesheet">
+  <link rel="icon" href="template/favicon.png" type="image/png">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <style>body{padding-bottom:0;}.article-header{margin-bottom: 40px;}</style>
+
+</head>
+<body>
+<!--
+■ToDo
+☆☆☆☆☆
+
+☆☆☆
+video, audio
+バージョン(CSS,JS)
+関連記事
+人気記事
+
+☆
+《template》もフルパスにする
+
+-->
+
+<header class="main-header">
+<h1 class="main-title"><a href="http://musou.s38.xrea.com/basic-blog/readme.html" target="_blank">Basic Blog</a></h1>
+</header>
+
+<article class="main-contents">
+
+<article class="article">
+<header class="article-header"><h1 class="article-title">ダウンロード</h1></header>
+<div class="contents">
+
+<p><span class="badge-blue">ダウンロード</span> <a href="http://musou.s38.xrea.com/basic-blog/basic-blog.zip">basic-blog.zip</a> Ver1.00</p>
+<p>PHPが動くことと、SQLite(PDO)が使えることが動作条件です</p>
+</div></article>
+
+
+
+<article class="article">
+<header class="article-header"><h1 class="article-title">設置方法</h1></header>
+<div class="contents">
+
+<ol>
+  <li>ダウンロードして解凍する</li>
+  <li><code>setting.php</code>を開いてパスワードを設定する <a href="#charset">*</a></li>
+  <li>中身を丸ごとアップロード</li>
+</ol>
+
+<p>準備が完了したら設置したURLにアクセスするだけで設置完了です。→ http://設置したURL/</p>
+
+<p class="mininote">※パーミッションの設定が必要なサーバでは、uploadディレクトリのパーミッションを707に設定してください</p>
+
+<p id="charset" class="infobox-green">ファイルを編集する時は、文字コードを「UTF-8 BOMなし」で保存してください<br>メモ帳では保存できないので、<a href="http://www.vector.co.jp/soft/winnt/writing/se476839.html" target="_blank">Mery</a>等のテキストエディタをご利用ください</p>
+
+</div></article>
+
+
+<article class="article">
+<header class="article-header"><h1 class="article-title">投稿フォームについて</h1></header>
+<div class="contents">
+
+<h2>本文欄</h2>
+<p><mark>本文欄はHTMLタグを直接打ち込んで入力してきます</mark><br>
+記事のデザインについては<a href="template/@design.html" target="_blank">デザイン見本</a>をご覧ください。</p>
+
+<h2>本文欄内でのショートカット</h2>
+<p>HTMLタグを打つのは少し面倒なので、タグ打ちに便利なショートカットを用意しています</p>
+
+<table>
+<tr><th>ショートカット</th><th>説明</th></tr>
+<tr><td>Ctrl＋/</td><td>カーソル位置に閉じタグを挿入する</td></tr>
+<tr><td>Ctrl＋↓</td><td>MarkdownをHTMLに変換する</td></tr>
+</table>
+
+<h2>カテゴリ欄</h2>
+
+
+<ul>
+  <li>カテゴリは空白で区切ると複数指定できます</li>
+  <li>カテゴリを複数指定した場合は、最初の項目がメインカテゴリとなります</li>
+  <li>カテゴリ名に空白を使用したい場合は、空白の代わりにアンダーバー(_)を使用してください</li>
+  <li>カテゴリ欄をダブルクリックすると入力候補が表示されます</li>
+</ul>
+
+<h2>履歴について</h2>
+<p>このブログでは編集ごとに投稿した内容を記録しているので、以前に投稿した内容を復元することができます<br>本文のみ復元可能です</p>
+
+
+
+<h2>投稿フォームを開くショートカット</h2>
+
+<p>キーボードの<kbd>Ctrl＋スペース</kbd>を押すと投稿フォームを開くことができます</p>
+
+</div></article>
+
+
+
+<article class="article">
+<header class="article-header"><h1 class="article-title">ファイルのアップロードについて</h1></header>
+<div class="contents">
+<p>このブログでは<mark>投稿フォームにファイルをドラッグ＆ドロップ</mark>すると、アップロードすることができます</p>
+<ul>
+  <li>アップロードしたファイルはメニューのアップリストから見ることができます</li>
+  <li>アップロードしたファイルは<code>upload/年/月日/</code>ディレクトリに入ります。日毎に管理されます</li>
+  <li>大きな画像をアップロードすると、縮小表示されポップアップで開きます。初期値は800ピクセルです</li>
+</ul>
+
+<h2>アップロードの制限</h2>
+
+<p>アップロード可能な最大ファイルサイズはPHPの設定で決まります<br>
+アップロードしたい容量を増やしたい場合は、PHPの設定(php.ini)を変更してください</p>
+
+<table>
+<tr><th>PHPの設定</th><th>説明</th></tr>
+<tr><td>upload_max_filesize</td><td class="left">1ファイルあたりの最大サイズ</td></tr>
+<tr><td>post_max_size</td><td class="left">複数ファイルを同時にアップした時の最大サイズ</td></tr>
+</table>
+
+<p class="mininote">PHPの設定でセーフモードが有効になっているとアップロード機能が使えません<br>
+セーフモードは解除してください→<a href="https://www.google.co.jp/search?num=30&amp;lr=lang_ja&amp;q=php+%E3%82%BB%E3%83%BC%E3%83%95%E3%83%A2%E3%83%BC%E3%83%89" target="_blank">詳しくは検索</a></p>
+
+</div></article>
+
+
+
+<article class="article">
+<header class="article-header"><h1 class="article-title">コメントについて</h1></header>
+<div class="contents">
+
+<ul>
+  <li>コメントを投稿するにはJavaScriptが有効である必要があります</li>
+  <li><kbd>&gt;&gt;レス番号</kbd>とすると、そのレスにアンカーをつけることができます</li>
+  <li>コメント欄でのHTMLタグは無効です</li>
+  <li>コメントを削除したい場合は、日付の隣にあるピリオドをクリックすると削除できます。<span class="pink b-pink">管理者限定</span></li>
+</ul>
+</div></article>
+
+
+
+<article class="article">
+<header class="article-header"><h1 class="article-title">アイキャッチ画像について</h1></header>
+<div class="contents">
+<p>このブログでは記事毎にアイキャッチ画像を設定することができます。</p>
+<ol>
+  <li>記事中の一番最初にあるimgタグがアイキャッチ画像として自動的に登録されます</li>
+  <li>2番目以降の画像をアイキャッチ画像にしたい場合は、タグに<kbd>eyecatch</kbd>クラスを付けてください</li>
+  <li>imgタグがない場合は、その記事のアイキャッチ画像＝サイトのアイキャッチ画像となります</li>
+</ol>
+
+
+
+<h2>サイトのアイキャッチ画像</h2>
+<p>サイトのアイキャッチ画像は<a href="template/eyecatch.png" target="_blank" class="popup">template/eyecatch.png</a>になります</>
+
+<p>独自の画像を用意してeyecatch.pngを上書きしてもOKです。<br>
+その時はeyecatch.pngのサムネイル版である480×270サイズの<code>eyecatch.thumb.png</code>も必ず用意してください</p>
+
+<h2>アイキャッチ画像のサムネイル</h2>
+
+<p>投稿フォームでアイキャッチ画像のサムネイルを作成すると、そのサムネイルがトップページに表示されるようになります</p>
+</div></article>
+
+
+
+<article class="article">
+<header class="article-header"><h1 class="article-title">ブログの設定について</h1></header>
+<div class="contents">
+<p>設定可能なのは<code>setting.php</code>にある項目のみです<br>
+setting.phpをテキストエディタで編集してアップロードすると設定が反映されます</p>
+</div></article>
+
+
+
+<article class="article">
+<header class="article-header"><h1 class="article-title">記事ページのURLを書き換える</h1></header>
+<div class="contents">
+<p>このブログにおける記事ページのURLは<kbd>http://URL/?action=entry&id=記事番号</kbd>となりますが<br>
+URL書き換え機能を使用すると<kbd>http://URL/記事番号</kbd>に短縮することができます</p>
+
+<ol> 
+  <li><code>setting.php</code>を開いて「URL書き換え」を有効にする</li>
+  <li>下記の内容の<code>.htaccess</code>ファイルを、index.phpと同じディレクトリに設置する</li>
+</ol>
+
+<pre><span class="pre-title">.htaccess</span>
+RewriteEngine on
+RewriteRule ^(\d+)$ index.php?action=entry&amp;id=$1 [L,QSA]
+</pre>
+
+<p class="mininote">※URLを書き換えるには、Apacheでmod_rewriteが使える必要があります</p>
+
+</div></article>
+
+
+
+<article class="article">
+<header class="article-header"><h1 class="article-title">テンプレートについて</h1></header>
+<div class="contents">
+<p>自分用のテンプレートを作るには？</p>
+<ol>
+  <li><code>templateフォルダ</code>を複製します。例えば複製したフォルダ名をAとします</li>
+  <li><code>setting.php</code>を開いて<var>$設定['テンプレート']</var>の値をAに変更する</li>
+</ol>
+
+<p>これで準備完了です。あとはAフォルダ内のファイルを編集すればブログに適用されます。</p>
+
+<ul>
+  <li>HTMLを編集するなら<code>template/*.html</code>か<code>template/html.php</code></li>
+  <li>CSSを編集するなら<code>template/*.css</code></li>
+  <li>記事本文のCSSを編集するなら<code>template/blog.css</code></li>
+</ul>
+
+<h2>テンプレートの変数について</h2>
+<p>HTMLテンプレートは単純なHTMLファイルなのですが、いくつかの特別なルールがあります。</p>
+
+<table>
+<tr><th>ルール</th><th>変換先</th></tr>
+<tr><td class="center">《変数名》</td><td class="left">該当する変数の値に変換</td></tr>
+<tr><td class="center">《&amp;変数名》</td><td class="left">該当する変数の値に変換 ＋ HTMLエスケープ処理(&lt;&gt;&quot;&amp;)</td></tr>
+<tr><td class="center">《%変数名》</td><td class="left">該当する変数の値に変換 ＋ URLエンコード処理</td></tr>
+<tr><td class="center">《?PHPコード》</td><td class="left">PHPのコードを実行する。printで出力すると表示されます</td></tr>
+</table>
+
+<p>どのような変数が使えるかはページごとに異なります<br>
+次のようにURLに<kbd>var=1</kbd>を付与してアクセスすると、画面下に使用可能な変数一覧が表示されます。<span class="pink b-pink">管理者限定</span></p>
+<ul>
+  <li>http://設置したURL/<b>?var=1</b></li>
+  <li>http://設置したURL/?action=entry&amp;id=1<b>&amp;var=1</b></li>
+</ul>
+</div></article>
+
+
+
+<article class="article">
+<header class="article-header"><h1 class="article-title">バックアップ等について</h1></header>
+<div class="contents">
+
+<h2>バックアップ</h2>
+<ul>
+  <li>全ての投稿は<code>uploadフォルダ</code>に入ってます。uploadフォルダを丸ごと複製すればバックアップが取れます</li>
+  <li>データベースのみをバックアップするには<code>upload/blog.db</code>の1ファイルだけでOK</li>
+</ul>
+
+
+<h2>ブログの初期化</h2>
+
+<p>ブログを初期化するには<code>upload/blog.db</code>を削除するだけでOKです。<br>
+アップロードしたファイルはデータベースで管理していないのでそのまま残ります。</p>
+
+<h2>引っ越しの方法</h2>
+<p>引っ越しの方法は初回設置時のように丸ごとアップロードするだけです</p>
+
+<p class="mininote">注意する点として、パーミッションの設定が必要なサーバでは<code>upload/</code>と<code>upload/blog.db</code>のパーミッションを設定してください<br>
+パーミッションはそれぞれ707と606になります</p>
+<h2>一括置換</h2>
+<p>引っ越し時など、記事中の文字を一括置換したい時があるかもしれません。<br>
+一括置換については未サポートですが、ヒントとしてやり方を記載しておきます。</p>
+
+<ol>
+  <li>SQLiteを編集できるソフトを探します。例：<a href="http://sqlitestudio.pl/" target="_blank">SQLiteStudio</a> (日本語対応)</li>
+  <li><code>upload/blog.db</code>をダウンロードする。<b>必ずblog.dbのバックアップを取っておきましょう</b></li>
+  <li>ソフトからblog.dbを開いて、次のようにSQLクエリを打ち込む。これで完了</li>
+</ol>
+<p>例えば「ブログ」の「記事本文」全てを対象に「http://example.com/」→「http://example.jp/」に書き換えたい場合は次のようなSQLクエリになります。</p>
+
+<pre>
+<span class="pre-title">一括置換用のSQLクエリ</span>
+UPDATE <span class="kw1">ブログ</span> SET <span class="kw1">記事本文</span> = REPLACE(<span class="kw1">記事本文</span>, '<span class="kw1">http://example.com/</span>', '<span class="kw1">http://example.jp/</span>')
+</pre>
+<p>「ブログ」がテーブル名で「記事本文」が列名です。他のテーブルや列の場合も以上を参考にしてみてください。</p>
+
+</div></article>
+
+
+<article class="article">
+<header class="article-header"><h1 class="article-title">内部設計について</h1></header>
+<div class="contents">
+
+<h2>基本事項</h2>
+
+
+<ul>
+  <li>文字コードはUTF-8</li>
+  <li>プログラムでは変数名や関数名に日本語を多く使用しています</li>
+</ul>
+
+
+<h2>フロントコントローラ方式</h2>
+
+<p>全てのアクセスが<code>index.php</code>を経由するフロントコントローラ方式を採用しています。<br>
+index.phpはプログラム全体の目次となるように作ってあるので、プログラム全体を把握するのに便利です。</p>
+
+<ol>
+  <li><code>index.php</code>が読み込まれる</li>
+  <li>設定ファイルを読み込む <code>setting.php</code></li>
+  <li>共通して利用する関数を読み込む <code>action/php/function.php</code></li>
+  <li>起動処理を実行する <code>action/php/boot.php</code></li>
+  <li>共通して利用するHTMLテンプレートを読み込む <code>template/html.php</code></li>
+  <li>URLのaction値に基いて、それを実行して終了 <code>action/*.php</code></li>
+</ol>
+
+<h2>HTMLとPHPの分離</h2>
+
+<p>デザイン(HTML)とロジック(PHP)は分離するのが基本ですが、現実的には両者が密接に混じり合う場面も出てきます。<br>
+そのようなコードは<code>template/html.php</code>に分離しています。HTMLの比重が高いのでtemplateフォルダに置いてあります</p>
+
+<p>例えばHTMLを修正したい場合は、次のような順番でHTMLを探すとよいでしょう</p>
+
+
+<ol>
+  <li>template/アクション名.html</li>
+  <li>template/html.php</li>
+  <li>action/アクション名.php</li>
+</ol>
+
+<h2>独自actionの追加</h2>
+
+<ol>
+<li><code>index.php</code>にactionを追加する</li>
+<li>actionディレクトリに<code>アクション名.php</code>を作成する。ここにコードを記述します</li>
+<li>必要ならばtemplateディレクトリに<code>アクション名.html</code>を作成する (任意)</li>
+</ol>
+
+<p class="mininote">アクション名とファイル名は必ずしも揃える必要はないですが、揃えた方が分かりやすいです</p>
+
+<h2>初回インストール時</h2>
+
+<p>初回インストール時は、起動処理(boot.php)において<code>upload/blog.db</code>ファイルの有無をチェックし<br>
+ファイルが無ければ<code>action/php/install.php</code>が実行されます</p>
+
+<h2>データベースについて</h2>
+
+<p>データベースのテーブルに関する情報は<code>action/php/setting.table.php</code>に記載されています。</p>
+
+<p>このブログでは非公式ながらMySQLを使用することができます<br>
+初回インストール時にsetting.phpでMySQL用の設定が記述されていると、MySQLとしてインストールされます</p>
+
+<pre>
+<span class="pre-title">MySQL用の設定</span>
+//MySQLのPDOドライバ (デフォルトデータベースはSQLiteなので無効になっています)
+<span class="kw3">//</span>$設定['DBドライバ'] = "mysql:host=<span class="kw3">ホストアドレス</span>;dbname=<span class="kw3">データベース名</span>;charset=utf8";
+
+//MySQLのユーザ名
+$設定['DBユーザ'] = "<span class="kw3">ユーザ名</span>";
+
+//MySQLのパスワード
+$設定['DBパスワード'] = "<span class="kw3">パスワード</span>";
+</pre>
+
+<p>ホストアドレス・テータベース名・ユーザ名・パスワードを設定し、<kbd>$設定</kbd>の先頭についているコメントを外してください</p>
+
+<h2>ソーシャルボタンについて</h2>
+
+<p>このブログにはソーシャルボタンが組み込まれています。<br>
+Facebookのいいねボタン、はてなのブックマークボタン、ツイッターのツイートボタンの3つです。<br>
+組み込まれている場所は<code>template/entry.html</code>です</p>
+
+<p class="mininote">ソーシャルボタンはentryページ専用です。他のページは非対応です</p>
+
+<h2>ツール機能</h2>
+<p>ブログにちょっとした管理機能を追加したい場合はツールをPHPで自作すると便利です。<br>
+ツールは次のように設置すると、メインメニューに表示することができます。</p>
+
+<ul>
+  <li>作成するPHPファイルの2行目に<kbd>//■ツール名</kbd>と記載する</li>
+  <li>作成したPHPファイルを<code>action/tool</code>フォルダの中に入れる</li>
+</ul>
+
+<p class="mininote">ツールに関連するファイルがあれば、ツール名と同名のフォルダを作成し、そこに入れておきましょう</p>
+
+<h2>Special Thanks</h2>
+
+<p>利用しているライブラリ等です。</p>
+<ul>
+  <li><a href="http://sourceforge.net/projects/simplehtmldom/" target="_blank">Simple HTML DOM Parser</a></li>
+  <li><a href="http://qbnz.com/highlighter/" target="_blank">GeSHi</a></li>
+  <li><a href="http://jquery.com/" target="_blank">jQuery</a></li>
+  <li><a href="http://madapaja.github.io/jquery.selection/ja_jp.html" target="_blank">jQuery.selection</a></li>
+  <li><a href="http://github.com/tapmodo/Jcrop" target="_blank">Jcrop</a></li>
+  <li><a href="http://ricostacruz.com/nprogress" target="_blank">NProgress</a></li>
+  <li><a href="https://github.com/gnarf/jquery-ajaxQueue" target="_blank">ajaxQueue</a></li>
+  <li><a href="https://github.com/chjj/marked" target="_blank">Marked</a></li>
+  <li><a href="http://tinysort.sjeiti.com/" target="_blank">TINY SORT</a></li>
+  <li><a href="http://getbootstrap.com/2.3.2/" target="_blank">BootStrap</a></li>
+  <li><a href="http://www.famfamfam.com/" target="_blank">FAMFAMFAM ICON</a></li>
+</ul>
+
+</div></article>
+
+</article>
+
+
+<script src="template/blog.js"></script>
+
+
+</body>
+</html>

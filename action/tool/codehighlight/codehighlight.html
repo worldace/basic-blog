@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>コードハイライト</title>
+  <link href="《テンプレート》/base-admin.css" rel="stylesheet">
+  <link href="《テンプレート》/blog.css" rel="stylesheet">
+  <style>form{margin:30px 0;text-align:center;} textarea{width:50%;height:300px;margin:8px 0;border-radius:0;}</style>
+  <script src="《jQuery》"></script>
+</head>
+<body>
+
+<header class="main-header">
+<h1 class="main-title">《ブログ名》</h1>
+</header>
+
+<form action="《URL》?action=tool&tool=codehighlight" method="POST">
+<select name="lang">
+<option>▼言語を選択してください</option>
+<option value="HTML">HTML</option>
+<option value="JavaScript">JavaScript</option>
+<option value="CSS">CSS</option>
+<option value="PHP">PHP</option>
+<option value="Python">Python</option>
+<option value="Ruby">Ruby</option>
+<option value="Perl">Perl</option>
+<option value="Java">Java</option>
+<option value="Csharp">C#</option>
+<option value="Cpp">C++</option>
+<option value="C">C</option>
+</select><br>
+<textarea name="before" spellcheck="false"></textarea><textarea name="after" spellcheck="false"></textarea>
+<input type="submit" value="コードハイライト">
+</form>
+
+<div class="contents"></div>
+
+
+<script>
+$(function(){
+    $('form').submit(function() {
+        var form     = $('form');
+        var submit   = $("form input[type='submit']");
+
+        //submitボタンを無効に(2重投稿を防止する)
+        submit.attr('disabled', 'disabled'); 
+         
+        //Ajax送信
+        $.ajax({
+            url : form.attr('action'),
+            type: form.attr('method'),
+            data: form.serialize(),
+            dataType: 'text',
+            success: function(response) {
+                form.find('[name="after"]').val(response);
+                $('div.contents').html(response);
+            },
+            error: function(xhr) {
+                alert(xhr.responseText);
+            }
+        });
+
+        //submitボタンの無効解除
+        submit.removeAttr('disabled'); 
+
+        //最後にこれを忘れないように
+        return false; 
+
+    });
+});
+</script>
+
+
+</body>
+</html>
