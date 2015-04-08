@@ -24,7 +24,7 @@ if(!$ファイル一覧){ エラー('その日にアップロードされたフ�
 foreach($ファイル一覧 as $ファイル名){
     $投稿日時 = 日付変換(filemtime("$ディレクトリ/$ファイル名"));
     $サイズ   = バイト数を変換(filesize("$ディレクトリ/$ファイル名"));
-    $削除     = "<a href=\"{$設定['URL']}?action=upfiledelete&y={$_GET['y']}&m={$_GET['m']}&d={$_GET['d']}&filename=$ファイル名\" class=\"filedelete\"><img src=\"{$設定['テンプレート']}/delete.png\" width=\"16\" height=\"16\"></a>";
+    $削除     = "<form action=\"{$設定['URL']}?action=upfiledelete\" method=\"POST\"><input type=\"hidden\" name=\"y\" value=\"{$_GET['y']}\"><input type=\"hidden\" name=\"m\" value=\"{$_GET['m']}\"><input type=\"hidden\" name=\"d\" value=\"{$_GET['d']}\"><input type=\"hidden\" name=\"filename\" value=\"{$ファイル名}\"><input class=\"filedelete\" type=\"image\" name=\"submit\" src=\"{$設定['テンプレート']}/delete.png\" width=\"16\" height=\"16\"></form>";
     $設定['アップファイル表'] .= "<tr><td>$投稿日時</td><td><a href=\"$ディレクトリ/$ファイル名\" target=\"_blank\">$ファイル名</a></td><td>$サイズ</td><td>$削除</td></tr>\n";
 }
 

@@ -293,7 +293,7 @@ function コメントのHTML作成($検索結果, $i = 1){
         $comment['コメント本文'] = preg_replace("/＞＞(\d+)/", "<a href=\"#comment{$comment['記事ID']}-$1\" class=\"comment-anker\">&gt;&gt;$1</a>", $comment['コメント本文']);
 
         if(管理者なら()){
-            $comment['管理用:コメント削除リンク'] = "<a href=\"{$設定['URL']}?action=commentdelete&entry_id={$comment['記事ID']}&comment_id={$comment['コメントID']}\" class=\"comment-delete\">.</a>";
+            $comment['管理用:コメント削除リンク'] = "<a href=\"{$設定['URL']}?action=commentdelete\" class=\"comment-delete\">.</a>";
         }
 
         $html .= テンプレート変換($設定['_コメント'], $comment);

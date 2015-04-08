@@ -22,9 +22,10 @@ $('.comment-form').submit(function() {
 
 //コメント削除
 $('.comment-delete').click(function() {
-    var a       = $(this);
-    var comment = $(this).closest('.comment');
-    var id      = $(this).closest('.comments').attr('data-entry_id');
+    var a          = $(this);
+    var comment    = $(this).closest('.comment');
+    var comment_id = $(this).closest('.comment').attr('data-comment_id');
+    var entry_id   = $(this).closest('.comments').attr('data-entry_id');
 
     comment.addClass("comment-delete-selected");
     var flag = window.confirm("このコメントを削除しますか？");
@@ -33,12 +34,13 @@ $('.comment-delete').click(function() {
 
     $.ajax({
         url : a.attr('href'),
-        type: 'GET',
+        type: 'POST',
+        data: {'entry_id': entry_id, 'comment_id': comment_id},
         success: function(response) {
             comment.fadeOut();
             //コメント数を減少させる
-            var comment_sum = parseInt($(".comment" + id + "-sum").first().text()) - 1;
-            $(".comment" + id + "-sum").text(comment_sum);
+            var comment_sum = parseInt($(".comment" + entry_id + "-sum").first().text()) - 1;
+            $(".comment" + entry_id + "-sum").text(comment_sum);
         },
         error: function(xhr) {
             alert(xhr.responseText);

@@ -1,8 +1,8 @@
 <?php
 //======================================================
-// ■指定したコメントを1件削除する (管理用、Ajax専用)
+// ■指定したコメントを1件削除する (管理用、POST、Ajax専用)
 // 
-// http://127.0.0.1/blog/?action=commentdelete&entry_id=&comment_id=
+// http://127.0.0.1/blog/?action=commentdelete
 // 呼び出し元: ../index.php
 //======================================================
 
@@ -10,15 +10,15 @@
 パスワードチェック();
 
 if (!Ajaxなら()){ exit; }
-if (!自然数なら($_GET['comment_id'])){ エラー('不正なコメントIDです'); }
-if (!自然数なら($_GET['entry_id'])){ エラー('不正な記事IDです'); }
+if (!自然数なら($_POST['comment_id'])){ エラー('不正なコメントIDです'); }
+if (!自然数なら($_POST['entry_id'])){ エラー('不正な記事IDです'); }
 
 //削除処理
-$更新成功 = データベース更新("update コメント set コメント状態 = '削除' where コメントID = {$_GET['comment_id']}");
+$更新成功 = データベース更新("update コメント set コメント状態 = '削除' where コメントID = {$_POST['comment_id']}");
 if(!$更新成功){ エラー('コメントを削除できませんでした'); }
 
 //コメント数を集計
-$コメント数 = データベース件数("select count(コメントID) from コメント where 記事ID = {$_GET['entry_id']} and コメント状態 = '公開'");
+$コメント数 = データベース件数("select count(コメントID) from コメント where 記事ID = {$_POST['entry_id']} and コメント状態 = '公開'");
 
 //コメント数をブログテーブルにセット
-データベース更新("update ブログ set 記事コメント数 = $コメント数 where 記事ID = {$_GET['entry_id']}");
+データベース更新("update ブログ set 記事コメント数 = $コメント数 where 記事ID = {$_POST['entry_id']}");

@@ -99,12 +99,15 @@ function パスワードチェック(){
     global $設定;
 
     $sha1 = パスワードハッシュ();
-    
     if($_COOKIE['p'] !== $sha1){
         $query = urlencode($_SERVER['QUERY_STRING']);
         リダイレクト("{$設定['URL']}?action=login&query=$query");
-        exit;
     }
+    
+    if(!preg_match("|^{$設定['URL']}|", $_SERVER['HTTP_REFERER'])){
+        エラー("リファラが有効である必要があります");
+    }
+
     setcookie('p', $sha1, $_SERVER['REQUEST_TIME']+60*60*24*$設定['管理者用クッキー有効日数']);
 }
 
