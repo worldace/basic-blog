@@ -37,7 +37,7 @@ video, audio
 <div class="contents">
 
 <p><span class="badge-blue">ダウンロード</span> <a href="http://musou.s38.xrea.com/basic-blog/basic-blog.zip">basic-blog.zip</a> Ver1.00</p>
-<p>PHPが動くことと、SQLite(PDO)が使えることが動作条件です</p>
+<p>PHP製のスクリプトです。SQLite(PDO)が使えることが動作条件です</p>
 </div></article>
 
 
@@ -122,8 +122,8 @@ video, audio
 <tr><td>post_max_size</td><td class="left">複数ファイルを同時にアップした時の最大サイズ</td></tr>
 </table>
 
-<p class="mininote">PHPの設定でセーフモードが有効になっているとアップロード機能が使えません<br>
-セーフモードは解除してください→<a href="https://www.google.co.jp/search?num=30&amp;lr=lang_ja&amp;q=php+%E3%82%BB%E3%83%BC%E3%83%95%E3%83%A2%E3%83%BC%E3%83%89" target="_blank">詳しくは検索</a></p>
+<p class="mininote">PHPの設定でセーフモードが有効だとアップロード機能が使えません<br>
+アップロード機能を使用するならセーフモードを解除してください→<a href="https://www.google.co.jp/search?num=30&amp;lr=lang_ja&amp;q=php+%E3%82%BB%E3%83%BC%E3%83%95%E3%83%A2%E3%83%BC%E3%83%89" target="_blank">詳しくは検索</a></p>
 
 </div></article>
 
@@ -146,7 +146,8 @@ video, audio
 <article class="article">
 <header class="article-header"><h1 class="article-title">アイキャッチ画像について</h1></header>
 <div class="contents">
-<p>このブログでは記事毎にアイキャッチ画像を設定することができます。</p>
+<p>このブログでは記事毎にアイキャッチ画像を設定することができます<br>
+アイキャッチ画像はブログの見栄えや、ソーシャルでシェアされた際の呼び込みに重要な役割を担います</p>
 <ol>
   <li>記事中の一番最初にあるimgタグがアイキャッチ画像として自動的に登録されます</li>
   <li>2番目以降の画像をアイキャッチ画像にしたい場合は、タグに<kbd>eyecatch</kbd>クラスを付けてください</li>
@@ -156,7 +157,8 @@ video, audio
 <p class="mininote">アイキャッチ画像は自サーバ内にある必要があります。外部サーバの画像は非対応です</p>
 
 <h2>サイトのアイキャッチ画像</h2>
-<p>サイトのアイキャッチ画像は<a href="template/eyecatch.png" target="_blank" class="popup">template/eyecatch.png</a>になります</>
+<p>サイトのアイキャッチ画像は<a href="template/eyecatch.png" target="_blank" class="popup">template/eyecatch.png</a>になります<br>
+記事のアイキャッチ画像が存在しない場合にこの画像が使用されます</p>
 
 <p>独自の画像を用意してeyecatch.pngを上書きしてもOKです。<br>
 その時はeyecatch.pngのサムネイル版である480×270サイズの<code>eyecatch.thumb.png</code>も必ず用意してください</p>
@@ -250,14 +252,17 @@ RewriteRule ^(\d+)$ index.php?action=entry&amp;id=$1 [L,QSA]
 
 <h2>ブログの初期化</h2>
 
-<p>ブログを初期化するには<code>upload/blog.db</code>を削除するだけでOKです。<br>
-アップロードしたファイルはデータベースで管理していないのでそのまま残ります。</p>
+<p>ブログを初期化するには<code>upload/blog.db</code>を削除するだけでOKです<br>
+アップロードしたファイルはデータベースで管理していないのでそのまま残ります</p>
 
 <h2>引っ越しの方法</h2>
-<p>引っ越しの方法は初回設置時のように丸ごとアップロードするだけです</p>
+<p>引っ越しの方法は初回設置時のように丸ごとアップロードするだけですが、パーミッションの設定が必要になります</p>
 
-<p class="mininote">注意する点として、パーミッションの設定が必要なサーバでは<code>upload/</code>と<code>upload/blog.db</code>のパーミッションを設定してください<br>
-パーミッションはそれぞれ707と606になります</p>
+<ul>
+<li><code>upload/</code>のパーミッションを700 (これで動かなければ707)</li>
+<li><code>upload/blog.db</code> <code>setting.php</code>のパーミッションを600 (これで動かなければ606)</li>
+</ul>
+
 <h2>一括置換</h2>
 <p>引っ越し時など、記事中の文字を一括置換したい時があるかもしれません。<br>
 一括置換については未サポートですが、ヒントとしてやり方を記載しておきます。</p>
@@ -287,14 +292,13 @@ UPDATE <span class="kw1">ブログ</span> SET <span class="kw1">記事本文</sp
 
 <ul>
   <li>文字コードはUTF-8</li>
-  <li>プログラムでは変数名や関数名に日本語を多く使用しています</li>
 </ul>
 
 
 <h2>フロントコントローラ方式</h2>
 
-<p>全てのアクセスが<code>index.php</code>を経由するフロントコントローラ方式を採用しています。<br>
-index.phpはプログラム全体の目次となるように作ってあるので、プログラム全体を把握するのに便利です。</p>
+<p>全てのアクセスが<code>index.php</code>を経由するフロントコントローラ方式を採用しています<br>
+index.phpはプログラム全体の目次となるように作ってあるので、プログラム全体を把握するのに便利です</p>
 
 <ol>
   <li><code>index.php</code>が読み込まれる</li>
@@ -357,20 +361,23 @@ $設定['DBパスワード'] = "<span class="kw3">パスワード</span>";
 
 <h2>ソーシャルボタンについて</h2>
 
-<p>このブログにはソーシャルボタンが組み込まれています。<br>
-Facebookのいいねボタン、はてなのブックマークボタン、ツイッターのツイートボタンの3つです。<br>
-組み込まれている場所は<code>template/entry.html</code>です</p>
+<p>このブログにはソーシャルボタンが組み込まれています<br>
+Facebookのいいねボタン、はてなのブックマークボタン、ツイッターのツイートボタンの3つです<br>
+組み込まれている場所は<code>template/entry.html</code>になります</p>
 
 <p class="mininote">ソーシャルボタンはentryページ専用です。他のページは非対応です</p>
 
 <h2>ツール機能</h2>
-<p>ブログにちょっとした管理機能を追加したい場合はツールをPHPで自作すると便利です。<br>
-ツールは次のように設置すると、メインメニューに表示することができます。</p>
+<p>ブログにちょっとした管理機能を追加したい場合はツールをPHPで自作すると便利です<br>
+ツールは次のように設置すると、メインメニューに表示することができます</p>
 
 <ul>
-  <li>作成するPHPファイルの2行目に<kbd>//■ツール名</kbd>と記載する</li>
+  <li>作成するPHPスクリプトの2行目に<kbd>//■ツール名</kbd>と記載する</li>
+  <li>作成するPHPスクリプトには<code>パスワードチェック();</code>を入れましょう</li>
   <li>作成したPHPファイルを<code>action/tool</code>フォルダの中に入れる</li>
 </ul>
+
+<p>詳しい記述の方法は標準で入ってるツールを参考にしてください</p>
 
 <p class="mininote">ツールに関連するファイルがあれば、ツール名と同名のフォルダを作成し、そこに入れておきましょう</p>
 
