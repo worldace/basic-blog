@@ -69,8 +69,27 @@ if(preg_match('/^mysql/i', $設定['DBドライバ'])){
     }
 }
 
+//設定ファイルのパーミッション変更
+パーミッションを400にする("setting.php");
+パーミッションを400にする($設定['DBファイル']);
+
 
 //ログインページに移動して終了
 setcookie('p', 'login', $_SERVER['REQUEST_TIME']+60*60*24*$設定['管理者用クッキー有効日数']);
 リダイレクト("{$設定['URL']}?action=login");
 
+
+
+
+function パーミッションを400にする($file){
+    if(!is_callable('posix_getpwuid')){
+        return;
+    }
+
+    $ファイル所有者 = posix_getpwuid(fileowner($file));
+	$PHP実行者      = posix_getpwuid(posix_geteuid());
+
+    if($ファイル所有者['name'] === $PHP実行者['name']){
+        chmod($file, 0400);
+    }
+}
