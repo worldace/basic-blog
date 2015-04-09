@@ -451,6 +451,7 @@ function iframePreview(iframe, contents){
     var iframe_body = $("body", iframe_doc);
 
     $(".contents", iframe_doc).html(contents);
+    iframe.attr("height", iframe_body.outerHeight(true)+100);
 
     $("*", iframe_doc).on("load", function(){
         iframe.attr("height", iframe_body.outerHeight(true)+100);
