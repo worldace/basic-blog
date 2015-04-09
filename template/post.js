@@ -129,6 +129,10 @@ $("#tab-thumbnail").click(function(){
     if(!thumb_url){ thumb_url = textarea_dom.find("img").attr("src"); }
     if(!thumb_url){ return true; }
 
+    //サムネイル候補は自サイト内に存在する必要がある
+    var base_url = $("link[rel='index']").attr("href").replace(/index\.php$/, "");
+    if(thumb_url.indexOf(base_url) != 0){ return true; }
+
     //サムネイルの存在確認
     var new_thumb_url = thumb_url.replace(/\.(\w+)$/, ".thumb.$1");
     $.ajax({

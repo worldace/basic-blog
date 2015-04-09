@@ -763,14 +763,18 @@ function アイキャッチ画像検索($body){
 
     $dom = str_get_html($body);
 
-    $eyecatch = $dom->find('img.eyecatch', 0);
+    $eyecatch = $dom->find('.eyecatch', 0);
     $img      = $dom->find('img', 0);
 
     if($eyecatch){
-        return $eyecatch->getAttribute('src');
+        $url = $eyecatch->getAttribute('src');
     }
     elseif($img){
-        return $img->getAttribute('src');
+        $url = $img->getAttribute('src');
+    }
+
+    if(preg_match("|^{$設定['ベースURL']}|", $url)){
+        return $url;
     }
 }
 
