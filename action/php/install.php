@@ -70,8 +70,8 @@ if(preg_match('/^mysql/i', $設定['DBドライバ'])){
 }
 
 //設定ファイルのパーミッション変更
-パーミッションを400にする("setting.php");
-パーミッションを400にする($設定['DBファイル']);
+設定ファイルのパーミッション変更("setting.php", 0400);
+設定ファイルのパーミッション変更($設定['DBファイル'], 0600);
 
 
 //ログインページに移動して終了
@@ -81,7 +81,7 @@ setcookie('p', 'login', $_SERVER['REQUEST_TIME']+60*60*24*$設定['管理者用�
 
 
 
-function パーミッションを400にする($file){
+function 設定ファイルのパーミッション変更($file, $permission){
     if(!is_callable('posix_getpwuid')){
         return;
     }
@@ -90,6 +90,6 @@ function パーミッションを400にする($file){
 	$PHP実行者      = posix_getpwuid(posix_geteuid());
 
     if($ファイル所有者['name'] === $PHP実行者['name']){
-        chmod($file, 0400);
+        chmod($file, $permission);
     }
 }
