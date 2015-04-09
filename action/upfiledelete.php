@@ -13,7 +13,7 @@ $ファイルパス = "$ディレクトリ/{$_POST['filename']}";
 
 //引数チェック
 if(!checkdate($_POST['m'], $_POST['d'], $_POST['y'])){ エラー('日付が不正です'); }
-if(preg_match("/\//", $_POST['filename'])){ エラー('ファイル名が不正です'); }
+if(preg_match("/\//", $_POST['filename']) or preg_match("/^\.\./", $_POST['filename'])){ エラー('ファイル名が不正です'); }
 if(!is_file($ファイルパス)){ エラー('ファイルが存在しません'); }
 
 
