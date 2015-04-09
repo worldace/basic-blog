@@ -1,6 +1,7 @@
 !function($){
 
-//テキストエリアのカーソル位置に文字列を挿入するjQueryプラグイン ※要jquery.selection
+//--- テキストエリアのカーソル位置に文字列を挿入するjQueryプラグイン ---//
+//※要jquery.selection
 $.fn.insertText = function(str){
     var p1 = this.selection('getPos').start;
     var p2 = this.selection('getPos').end;
@@ -50,6 +51,7 @@ var entry_id    = $("input[name='id']").val();
 var indexphp    = $("link[rel='index']").attr("href");
 
 
+//--- 初期化処理 ---//
 !function 初期化処理(){
     //テキストエリアの縦幅調整
     textarea.css({height: $(window).height() - textarea_ex});
@@ -80,14 +82,14 @@ var indexphp    = $("link[rel='index']").attr("href");
 
 
 
-//テキストエリアの縦幅調整
+//--- テキストエリアの縦幅調整 ---//
 $(window).resize(function() {
     textarea.css({height: $(window).height() - textarea_ex});
 });
 
 
 
-//入力チェック
+//--- 入力チェック ---//
 $('#entrypost, #entryedit').submit(function() {
     if(title.val() == ''){
         alert('タイトルを入力してください');
@@ -106,14 +108,14 @@ $('#entrypost, #entryedit').submit(function() {
 
 
 
-//プレビュータブを開く
+//--- プレビュータブを開く ---//
 $("#tab-preview").click(function(){
     iframePreview($("#preview-iframe"), textarea.val());
 });
 
 
 
-//サムネイルタブを開く
+//--- サムネイルタブを開く ---//
 $("#tab-thumbnail").click(function(){
     //これを消さないとtextareの内容が反映されない
     $(".jcrop-holder").remove();
@@ -194,7 +196,7 @@ $("#tab-thumbnail").click(function(){
 
 
 
-//サムネイルを作成する
+//--- サムネイルを作成する ---//
 $("#thumbnail-make").click(function(){
     var section = $("#tab-thumbnail-section");
     var img     = $("#thumbnail-jcrop");
@@ -238,30 +240,14 @@ $("#thumbnail-make").click(function(){
 
 
 
-//記事削除確認
+//--- 記事削除の確認 ---//
 $('#entrydelete').submit(function() {
     return confirm("「" + title.val() + "」を削除しますか？");
 });
 
 
 
-/*
-//投稿プレビュー(submitボタンの上で右クリック) *休止中*
-$("#entrypost input[type='submit'], #entryedit input[type='submit']").on('contextmenu', function() {
-    var preview_form = $(this).parents('form').clone();
-
-    preview_form.attr({'action':'?action=preview', 'target':'_blank', 'id':'preview'});
-    preview_form.hide().appendTo('body');
-    preview_form.find("input[type='submit']").click();
-    preview_form.remove();
-
-    return false;
-});
-*/
-
-
-
-//履歴1。バージョンを選択したらiframeに該当コンテンツを表示する
+//--- 履歴1。バージョンを選択したらiframeに該当コンテンツを表示する ---//
 $(".version-tr").click(function() {
     var td     = $(this).find("td:first-child");
     var vid    = td.attr("data-vid");
@@ -290,7 +276,8 @@ $(".version-tr").click(function() {
 });
 
 
-//履歴2。復元ボタンを押したら、テキストエリアに表示する
+
+//--- 履歴2。復元ボタンを押したらテキストエリアに復元する ---//
 $("#version-restore").click(function() {
     var vid   = $(this).attr("data-vid");
     var vname = $(this).attr("data-vname");
@@ -322,7 +309,7 @@ $("#version-restore").click(function() {
 });
 
 
-//タブ
+//--- タブ ---//
 $(".tab > ul > li").click(function() {
     if($(this).hasClass("tab-selected")){ return false; }
 
@@ -338,7 +325,7 @@ $(".tab > ul > li").dblclick(function() {
 });
 
 
-//テキストエリア内のショートカット
+//--- テキストエリア内でのキーボードショートカット ---//
 $(textarea).keydown(function(e){
 
     //Markdown(Ctrl＋↓)
@@ -384,7 +371,7 @@ $(textarea).keydown(function(e){
 
 
 
-//候補表示(カテゴリ欄で使用)
+//--- 候補表示(カテゴリ欄で使用) ---//
 !function 候補表示(){
     var onmouse;
 
@@ -430,26 +417,24 @@ $(textarea).keydown(function(e){
 
 
 
-//optionタグにselected属性を付与する
-//第1引数: 親のselectタグを選択したjQueryオブジェクト。※data-selected属性に初期値を入れておく
+//--- optionタグにselected属性を付与する関数 ---//
 function selectSelected(select){
     var str = select.attr("data-selected");
-    if(str === undefined || str == ""){
+    if(str === undefined || str === null){
         return false;
     }
 
     select.find("option").each(function(){
-        if($(this).val() == str){
+        if($(this).val() === str){
             $(this).prop("selected", true);
         }
     });
+    //引数: selectタグを選択したjQueryオブジェクト。※data-selected属性に初期値を入れておく
 }
 
 
 
-//iframeにプレビューを表示する
-//第1引数: iframeタグを選択したjQueryオブジェクト
-//第2引数: iframe内に貼り付ける内容(.contents)
+//--- iframeにプレビューを表示する関数 ---//
 function iframePreview(iframe, contents){
     var iframe_doc  = iframe[0].contentWindow.document;
     var iframe_body = $("body", iframe_doc);
@@ -460,11 +445,13 @@ function iframePreview(iframe, contents){
     $("*", iframe_doc).on("load", function(){
         iframe.attr("height", iframe_body.outerHeight(true)+100);
     });
+    //第1引数: iframeタグを選択したjQueryオブジェクト
+    //第2引数: iframe内に貼り付ける内容(.contents)
 }
 
 
 
-//文字列から閉じてないタグを探す
+//--- 閉じてないタグを探す関数 ---//
 function closetagSearch(text){
     //終了タグが存在しないタグ
     var exclude_tag = ["br","wbr","hr","img","col","base","link","meta","input","keygen","area","param","embed","source","track","command"];
@@ -551,17 +538,19 @@ function closetagSearch(text){
     	tag_name = word + tag_name;
 
     }
-    
+
     return insert_tag;
+
+
+    //PHPのin_array()と同じ
+    function in_array(value, array){
+    	for(var i = 0; i < array.length; i++){
+    		if(array[i] === value) { return true; }
+    	}
+    	return false;
+    }
 }
 
-//PHPのin_array()と同等。closetagSeach()で使う
-function in_array(value, array){
-	for(var i = 0; i < array.length; i++){
-		if(array[i] === value) { return true; }
-	}
-	return false;
-}
 
 
 });

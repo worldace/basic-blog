@@ -4,7 +4,8 @@ $(function() {
 var textarea = $("textarea");
 var indexphp = $("link[rel='index']").attr("href");
 
-//ドロップされた場合
+
+//--- ドロップされた場合 ---//
 $('.dropzone').on('drop', function(e){
     var uploadfile = e.originalEvent.dataTransfer.files;
 
@@ -37,7 +38,7 @@ $('.dropzone').on('drop', function(e){
 
 
 
-//フォームから入力された場合
+//--- フォームから入力された場合 ---//
 $('form[enctype="multipart/form-data"]').submit(function(){
     var input      = $(this).find('input[type="file"]');
     var uploadfile = input.prop('files');
@@ -60,16 +61,18 @@ $('form[enctype="multipart/form-data"]').submit(function(){
 
 
 
-//テキストエリアのフォーカスが外れた時のカーソル位置を記憶する。insertText()で使用。要jquery.selection
+//--- テキストエリアのフォーカスが外れた時のカーソル位置を記憶する ---//
 textarea.on('blur', function() {
     var pos = $(this).selection('getPos');
     $(this).data("blurpos1", pos.start);
     $(this).data("blurpos2", pos.end);
 });
-//※IEだとドロップした時にテキストエリアのカーソル位置が取得できない時がある。その時に使用する
+//※insertText()で使用。要jquery.selection
+//※IEではドロップした時にテキストエリアのカーソル位置が取得できない時がある。その時に使用する
 
 
 
+//--- ファイルサイズ確認関数 ---//
 function ファイルサイズ確認(files){
     //ファイルサイズ制限, $ファイルサイズ制限, POST制限, $POST制限の4つの変数をHTMLに貼り付けておくこと
 
@@ -95,8 +98,9 @@ function ファイルサイズ確認(files){
 
 
 
+//--- 進捗付きアップロード ---//
 function ajaxUpload(formData){
-    $.ajaxQueue({ //要jquery.ajaxqueue
+    $.ajaxQueue({
         url : indexphp + '?action=upload',
         type: 'POST',
         contentType: false,
@@ -123,7 +127,7 @@ function ajaxUpload(formData){
         }
     });
 }
-
+//※要jquery.ajaxqueue
 
 
 });

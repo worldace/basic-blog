@@ -154,9 +154,10 @@ $(document).on('click', 'table.sortable th', function(e){
 
 
 
-//--- 画像ポップアップ。ポップアップさせたいタグにpopupクラスを付与する。 ---//
+//--- 画像ポップアップ ---//
 $("<div></div>", {id: "overlay417"}).hide().appendTo("body");
 
+//popupクラスならポップアップさせる
 $(".popup").click(function(e) {
 
     //イベントが発生した要素からURLを取得する
@@ -296,17 +297,16 @@ $("#overlay417").click(function() {
 
 
 function 最近見た記事を記録する(){
-    var recent = [];
-    var latest = [];
     var url    = $("link[rel='canonical']").attr("href");
     var title  = $("meta[property='og:title']").attr("content");
+    var latest = [];
 
     if(!localStorage || !url || !title){
         return;
     }
 
     if(localStorage.browsing_history){ //データ構造 [{url, title}]
-        recent = JSON.parse(localStorage.browsing_history);
+        var recent = JSON.parse(localStorage.browsing_history);
     }
 
     for(var i = 0; i < recent.length; i++){

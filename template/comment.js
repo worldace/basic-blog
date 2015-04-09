@@ -1,16 +1,17 @@
 $(function () {
 
 
+//--- 名前欄にクッキーセット ---//
 $("input[name='comment_name']").val($.cookie("cn"));
+
+//--- スパム対策 ---//
 $(".comment-form").attr('action', $(".comment-form").attr('action') + '?action=commentpost');
 $(".comment-form-dummy").css({'display': 'none'});
 
 
-//入力チェック
+//--- 入力チェック ---//
 $('.comment-form').submit(function() {
-    var form     = $(this);
-    var submit   = form.find("input[type='submit']");
-    var textarea = form.find("textarea");
+    var textarea = $(this).find("textarea");
 
     if(textarea.val() == ''){
         alert('コメントを入力してください');
@@ -20,18 +21,20 @@ $('.comment-form').submit(function() {
 });
 
 
-//コメント削除
+//--- コメント削除 ---//
 $('.comment-delete').click(function() {
     var a          = $(this);
     var comment    = $(this).closest('.comment');
     var comment_id = $(this).closest('.comment').attr('data-comment_id');
     var entry_id   = $(this).closest('.comments').attr('data-entry_id');
 
+    //削除確認
     comment.addClass("comment-delete-selected");
     var flag = window.confirm("このコメントを削除しますか？");
     comment.removeClass("comment-delete-selected");
     if(flag == false){ return false; }
 
+    //削除処理
     $.ajax({
         url : a.attr('href'),
         type: 'POST',
@@ -39,8 +42,9 @@ $('.comment-delete').click(function() {
         success: function(response) {
             comment.fadeOut();
             //コメント数を減少させる
-            var comment_sum = parseInt($(".comment" + entry_id + "-sum").first().text()) - 1;
-            $(".comment" + entry_id + "-sum").text(comment_sum);
+            var comment_sum = $(".comment" + entry_id + "-sum");
+            var count       = parseInt(comment_sum.first().text()) - 1;
+            comment_sum.text(count);
         },
         error: function(xhr) {
             alert(xhr.responseText);
@@ -51,7 +55,7 @@ $('.comment-delete').click(function() {
 });
 
 
-//レスポップアップ
+//--- レスポップアップ ---//
 $(".comment-anker").on({
     mouseenter:function(){
         var 番号     = parseInt($(this).text().replace(">>", ""));
@@ -65,7 +69,6 @@ $(".comment-anker").on({
         時間 = '<span class="comment-popup-date">' + 時間 + '</span> ';
         
         if(本文){
-            /*$('<article class="comment-popup"><header class="comment-popup-header">' + 番号 + 名前 + 時間 + '</header><p class="comment-popup-body">' + 本文 + '</p></article>').appendTo(this).hide().fadeIn(200);*/
             $('<article class="comment-popup"><p class="comment-popup-body">' + 本文 + '</p></article>').appendTo(this).hide().fadeIn(200);
         }
     },
