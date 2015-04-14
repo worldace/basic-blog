@@ -328,14 +328,15 @@ function コメントフォームのHTML作成(){
 
 
 function ページめくりのHTML作成($現在のページ番号, $表示件数, $DB取得件数, $リンク){
+    global $設定;
 
     if($現在のページ番号 > 1){
-        $前のページ番号 = $現在のページ番号 - 1;
-        $navi .= "<a href=\"{$リンク}{$前のページ番号}\" rel=\"prev\" class=\"paging-leftlink\">新しい記事へ</a> ";
+        $設定['前のページ'] = $リンク . ($現在のページ番号 - 1);
+        $navi .= "<a href=\"{$設定['前のページ']}\" rel=\"prev\" class=\"paging-leftlink\">新しい記事へ</a> ";
     }
     if($DB取得件数 > $表示件数){
-        $次のページ番号 = $現在のページ番号 + 1;
-        $navi .= "<a href=\"{$リンク}{$次のページ番号}\" rel=\"next\" class=\"paging-rightlink\">過去の記事へ</a> ";
+        $設定['次のページ'] = $リンク . ($現在のページ番号 + 1);
+        $navi .= "<a href=\"{$設定['次のページ']}\" rel=\"next\" class=\"paging-rightlink\">過去の記事へ</a> ";
     }
 
     if($navi){

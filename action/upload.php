@@ -71,8 +71,7 @@ for($i = 0; $i < count($_FILES['file']['tmp_name']); $i++){
 
 //レスポンスを返して終了
 if(Ajaxなら()){ 
-    header("Content-Type: text/html; charset=UTF-8");
-    print h($ajaxresponse);
+    テキスト表示($ajaxresponse);
 }
 else{
     リダイレクト("{$設定['URL']}?action=upfilelist&y=$年&m=$月&d=$日");

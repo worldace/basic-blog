@@ -58,18 +58,11 @@ $('.comment-delete').click(function() {
 //--- レスポップアップ ---//
 $(".comment-anker").on({
     mouseenter:function(){
-        var 番号     = parseInt($(this).text().replace(">>", ""));
-        var コメント = $(this).closest('.comments').find("[data-comment_id=" + 番号 + "]");
-        var 名前     = コメント.find(".comment-name").text();
-        var 時間     = コメント.find(".comment-date").text();
-        var 本文     = コメント.find(".comment-body").html();
-        
-        番号 = '<span class="comment-popup-no">' + 番号 + '.</span> ';
-        名前 = '<span class="comment-popup-name">' + 名前 + '</span> ';
-        時間 = '<span class="comment-popup-date">' + 時間 + '</span> ';
-        
-        if(本文){
-            $('<article class="comment-popup"><p class="comment-popup-body">' + 本文 + '</p></article>').appendTo(this).hide().fadeIn(200);
+        var 対象番号 = parseInt($(this).text().replace(">>", ""));
+        var 対象本文 = $(this).closest('.comments').find("[data-comment_id=" + 対象番号 + "]").find(".comment-body").html();
+
+        if(対象本文){
+            $('<article class="comment-popup"><p class="comment-popup-body">' + 対象本文 + '</p></article>').appendTo(this).hide().fadeIn(200);
         }
     },
     mouseleave:function(){

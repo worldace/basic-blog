@@ -8,9 +8,11 @@
 
 function テンプレート表示($file){
     global $設定;
-    
-    print テンプレート変換(file_get_contents($file), $設定);
+
     $設定['現在使用中のテンプレート'] .= $file;
+
+    header("Content-Type: text/html; charset=UTF-8");
+    print テンプレート変換(file_get_contents($file), $設定);
     exit;
 }
 
