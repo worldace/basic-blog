@@ -223,7 +223,8 @@ RewriteRule ^(\d+)$ index.php?action=entry&amp;id=$1 [L,QSA]
 <p>HTMLテンプレートは単純なHTMLファイルなのですが、いくつかの特別なルールがあります。</p>
 
 <table>
-<tr><th>ルール</th><th>変換先</th></tr>
+<caption>テンプレートの仕様</caption>
+<tr><th>仕様</th><th>説明</th></tr>
 <tr><td class="center">《変数名》</td><td class="left">該当する変数の値に変換</td></tr>
 <tr><td class="center">《&amp;変数名》</td><td class="left">該当する変数の値に変換 ＋ HTMLエスケープ処理(&lt;&gt;&quot;&amp;)</td></tr>
 <tr><td class="center">《%変数名》</td><td class="left">該当する変数の値に変換 ＋ URLエンコード処理</td></tr>
@@ -245,7 +246,6 @@ RewriteRule ^(\d+)$ index.php?action=entry&amp;id=$1 [L,QSA]
 
 <p class="mininote">部品ファイルにはHTMLとPHPだけでなく、CSSやJavaScriptも一緒に記載することができます</p>
 
-<p>プログラム全体の流れとしては、部品を作成していき最後にテンプレートに貼り付けて出力するという流れになります</p>
 
 <table>
 <caption>部品ファイルの仕様</caption>
@@ -256,7 +256,10 @@ RewriteRule ^(\d+)$ index.php?action=entry&amp;id=$1 [L,QSA]
 <tr><td class="right">$設定['_部品名_JavaScript']</td><td class="left">JavaScriptを記述する変数<br>変数の内容は《埋め込みJavaScript》に追加されます</td></tr>
 </table>
 
-<p>部品を作成する場合は<code>部品作成("部品名", 引数)</code>という関数を使用します</p>
+<p>部品を作成する場合は<code>部品作成("部品名", 引数)</code>という関数を使用してください</p>
+
+<p>プログラム全体の流れとしては、部品を作成していき最後にテンプレートに貼り付けて出力するという流れになります<br>
+部品とテンプレートの2段構成でHTMLを作成していくことを理解できればOKです</p>
 
 </div></article>
 
