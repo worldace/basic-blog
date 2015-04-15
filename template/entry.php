@@ -36,14 +36,14 @@ function _entry($entry) {
     }
 
     $設定 += $entry;
-    return テンプレート変換($設定['_記事'], $entry);
+    return テンプレート変換($設定['_entry_HTML'], $entry);
 }
 
 
 
 
 
-$設定['_記事']
+$設定['_entry_HTML']
 =<<<───────────────────────────
 <article id="article《記事ID》" class="article">
   <header class="article-header">

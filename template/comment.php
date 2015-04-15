@@ -38,12 +38,12 @@ function _comment($検索結果, $i = 1){
             $comment['管理用:コメント削除リンク'] = "<a href=\"{$設定['URL']}?action=commentdelete\" class=\"comment-delete\">.</a>";
         }
 
-        $html .= テンプレート変換($設定['_コメント'], $comment);
+        $html .= テンプレート変換($設定['_comment_HTML'], $comment);
     }
     return $html;
 }
 
-$設定['_コメント']
+$設定['_comment_HTML']
 =<<<───────────────────────────
 <article id="comment《記事ID》-《コメントID》" class="comment" data-comment_id="《コメントID》">
 <header class="comment-header"><span class="comment-no">《コメント番号リンク》</span><span class="comment-name" data-comment-site="《コメントサイト》">《コメント名前》</span><time class="comment-date">《コメント投稿時間》</time>《管理用:コメント削除リンク》</header>

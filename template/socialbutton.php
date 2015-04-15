@@ -8,11 +8,11 @@
 function _socialbutton(){
     global $設定;
 
-    return テンプレート変換($設定['_ソーシャルボタン'], $設定);
+    return テンプレート変換($設定['_socialbutton_HTML'], $設定);
 }
 
 
-$設定['_ソーシャルボタン']
+$設定['_socialbutton_HTML']
 =<<<───────────────────────────
 <ul class="socialbutton-list">
   <li><a href="https://www.facebook.com/sharer.php?u=《%記事URL》&t=《%記事タイトル》" target="_blank"><img src="《テンプレート》/facebook-like.png" width="69" height="20"></a><a class="socialbutton-balloon facebook-like-count">0</a></li>

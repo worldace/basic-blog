@@ -9,12 +9,13 @@
 function _mainmenu(){
     global $設定;
 
+    //管理者と一般ユーザではメニューが異なる
     if(管理者なら()){
         $設定['ツール一覧'] = _ツール一覧作成();
-        $html = テンプレート変換($設定['_管理用メインメニュー'], $設定);
+        $html = テンプレート変換($設定['_mainmenu_admin_HTML'], $設定);
     }
     else{
-        $html = テンプレート変換($設定['_メインメニュー'], $設定);
+        $html = テンプレート変換($設定['_mainmenu_HTML'], $設定);
     }
 
     return $html;
@@ -41,7 +42,9 @@ function _ツール一覧作成(){
 }
 
 
-$設定['_メインメニュー']
+
+//一般用メニュー
+$設定['_mainmenu_HTML']
 =<<<───────────────────────────
 <nav class="mainmenu dropdown">
 <button class="dropdown-button">メニュー<span class="dropdown-button-caret"></span></button>
@@ -62,7 +65,8 @@ $設定['_メインメニュー']
 
 
 
-$設定['_管理用メインメニュー']
+//管理者用メニュー
+$設定['_mainmenu_admin_HTML']
 =<<<───────────────────────────
 <nav class="mainmenu dropdown">
 <button class="dropdown-button">メニュー<span class="dropdown-button-caret"></span></button>

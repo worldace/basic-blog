@@ -35,14 +35,14 @@ function _headline($検索結果, $category = ""){
         $entry['サムネイル横幅'] = $設定['サムネイル横幅'];
         $entry['サムネイル縦幅'] = $設定['サムネイル縦幅'];
 
-        $html .= テンプレート変換($設定['_ヘッドライン'], $entry);
+        $html .= テンプレート変換($設定['_headline_HTML'], $entry);
     }
     
     return $html;
 }
 
 
-$設定['_ヘッドライン']
+$設定['_headline_HTML']
 =<<<───────────────────────────
 <div class="headline-box">
 <span class="headline-time">《記事投稿時間》</span><span class="headline-category js-category-name">《記事メインカテゴリ》</span>

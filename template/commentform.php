@@ -10,12 +10,12 @@
 function _commentform(){
     global $設定;
 
-    return テンプレート変換($設定['_コメントフォーム'], $設定);
+    return テンプレート変換($設定['_commentform_HTML'], $設定);
 }
 
 
 
-$設定['_コメントフォーム']
+$設定['_commentform_HTML']
 =<<<───────────────────────────
 <form action="《URL》" method="POST" class="commentform" accept-charset="utf-8">
 <div class="form-line commentform-line"><label>名前</label><input type="text" name="comment_name" value=""></div>
