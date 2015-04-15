@@ -11,62 +11,14 @@ $(function () {
 
 //--- 初期化処理 ---//
 !function 初期化処理(){
-    //ライトインデックスの中身がなければ消去
-    if($('.lightindex').find('td').length == 0){
-        $('.lightindex').hide();
-    }
-
     //カテゴリ名からアンダーバーを取る
     $(".js-category-name").text(function(i, text){
         return text.replace("_", " ");
     });
 
-    //最近見た記事
-    if($("#entry").length){
-        最近見た記事を記録する();
-    }
-    if($(".browsing-history").length){
-        最近見た記事を作成する();
-    }
 }();
 
 
-
-//--- メインメニュー ---//
-!function メインメニュー(){
-    var onmouse;
-
-    $('.dropdown-button').click(function() {
-        $(this).parents(".dropdown").children('.dropdown-menu').slideToggle(150);
-    });
-
-    $('.dropdown-menu a').click(function() {
-        //hrefがない場合はなにもせずに終了
-        if($(this).attr('href') == null){ return false; }
-
-        $(this).parents(".dropdown").children('.dropdown-menu').slideUp(0);
-    });
-
-    $('.dropdown-button, .dropdown-menu').hover(
-        function(){ onmouse = true;  },
-        function(){ onmouse = false; }
-    );
-
-    $(document).click(function() {
-        if (onmouse == false) {
-            $('.dropdown-menu').slideUp(80);
-        }
-    });
-
-    $(".dropdown-submenu > .dropdown-menu").on({
-        mouseenter:function(){
-            $(document).scrollLeft($(document).width() - $(window).width());
-        },
-        mouseleave:function(){
-            $(document).scrollLeft(0);
-        }
-    });
-}();
 
 
 
@@ -292,57 +244,6 @@ $(".popup").click(function(e) {
 $("#overlay417").click(function() {
     $("#overlay417").hide();
 });
-
-
-
-
-function 最近見た記事を記録する(){
-    var url    = $("link[rel='canonical']").attr("href");
-    var title  = $("meta[property='og:title']").attr("content");
-    var latest = [];
-
-    if(!localStorage || !url || !title){
-        return;
-    }
-
-    if(localStorage.browsing_history){ //データ構造 [{url, title}]
-        var recent = JSON.parse(localStorage.browsing_history);
-    }
-
-    for(var i = 0; i < recent.length; i++){
-        if(recent[i].url == url){
-            continue;
-        }
-        latest.push(recent[i]);
-    }
-
-    latest.unshift({url: url, title: title});
-    latest.splice(10);
-    localStorage.browsing_history = JSON.stringify(latest);
-}
-
-
-
-function 最近見た記事を作成する(){
-    var html = "";
-
-    if(!localStorage || !localStorage.browsing_history){
-        return;
-    }
-
-    var recent = JSON.parse(localStorage.browsing_history);
-
-    for(var i = 0; i < recent.length; i++){
-        if(!recent[i].url || !recent[i].title){
-            continue;
-        }
-        html += '<li title="' + recent[i].title + '"><a href="' + recent[i].url + '">' + recent[i].title + '</a></li>\n';
-    }
-
-    if(html){
-        $(".browsing-history").html(html);
-    }
-}
 
 });
 

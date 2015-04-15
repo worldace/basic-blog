@@ -6,6 +6,30 @@
 //======================================================
 
 
+function 部品作成(){
+    global $設定;
+    static $読み込み記録;
+
+    $args = func_get_args();
+    $name = array_shift($args);
+
+    include_once("{$設定['テンプレート']}/{$name}.php");
+
+    $html = call_user_func_array("_$name", $args);
+    
+    if(!$読み込み記録[$name]){
+        $css = "_{$name}_CSS";
+        $js  = "_{$name}_JavaScript";
+
+        $設定['埋め込みCSS']        .= $設定[$css];
+        $設定['埋め込みJavaScript'] .= $設定[$js];
+        $読み込み記録[$name] = true;
+    }
+
+    return $html;
+}
+
+
 function テンプレート表示($file){
     global $設定;
 

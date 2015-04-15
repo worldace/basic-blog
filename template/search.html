@@ -14,6 +14,7 @@
     [name="search"]{ width: 240px; }
   </style>
   <script src="《jQuery》"></script>
+  <style>《埋め込みCSS》</style>
 </head>
 <body>
 
@@ -55,8 +56,15 @@ $(function(){
             return false;
         }
     });
+    
+    //ライトインデックスの中身がなければ消去
+    if($('.lightindex').find('td').length == 0){
+        $('.lightindex').hide();
+    }
+
 });
 </script>
+<script>《埋め込みJavaScript》</script>
 
 
 </body>

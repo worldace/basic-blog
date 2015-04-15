@@ -15,6 +15,7 @@
 ■ToDo
 ☆☆☆☆☆
 
+
 ☆☆☆
 video, audio
 バージョン(CSS,JS)
@@ -37,7 +38,7 @@ video, audio
 <div class="contents">
 
 <p><span class="badge-blue">ダウンロード</span> <a href="http://musou.s38.xrea.com/basic-blog/basic-blog.zip">basic-blog.zip</a> Ver1.00</p>
-<p>PHP製のスクリプトです。SQLite(PDO)が使えることが動作条件です</p>
+<p>PHP製のスクリプトです。PHP5.3.0以上、SQLite(PDO)が使えることが動作条件です</p>
 </div></article>
 
 
@@ -213,7 +214,7 @@ RewriteRule ^(\d+)$ index.php?action=entry&amp;id=$1 [L,QSA]
 <p>これで準備完了です。あとはAフォルダ内のファイルを編集すればブログに適用されます。</p>
 
 <ul>
-  <li>HTMLを編集するなら<code>template/*.html</code>か<code>template/html.php</code></li>
+  <li>HTMLを編集するなら<code>template/*.html</code>か<code>template/*.php</code></li>
   <li>CSSを編集するなら<code>template/*.css</code></li>
   <li>記事本文のCSSを編集するなら<code>template/blog.css</code></li>
 </ul>
@@ -235,6 +236,16 @@ RewriteRule ^(\d+)$ index.php?action=entry&amp;id=$1 [L,QSA]
   <li>http://設置したURL/<b>?var=1</b></li>
   <li>http://設置したURL/?action=entry&amp;id=1<b>&amp;var=1</b></li>
 </ul>
+
+
+<h2>部品システム</h2>
+
+<p>HTMLとPHPを分離していくのが基本ですが、現実的には両者が密接に混じり合う場面も出てきます。<br>
+そのようなコードは部品と呼び<code>template/*.php</code>に分離しています</p>
+
+<p>部品ファイルにはHTMLとPHPだけでなく、CSSやJavaScriptも一緒に記載されています</p>
+
+
 </div></article>
 
 
@@ -305,23 +316,9 @@ index.phpはプログラム全体の目次となるように作ってあるの�
   <li>設定ファイルを読み込む <code>setting.php</code></li>
   <li>共通して利用する関数を読み込む <code>action/php/function.php</code></li>
   <li>起動処理を実行する <code>action/php/boot.php</code></li>
-  <li>共通して利用するHTMLテンプレートを読み込む <code>template/html.php</code></li>
   <li>URLのaction値に基いて、それを実行して終了 <code>action/*.php</code></li>
 </ol>
 
-<h2>HTMLとPHPの分離</h2>
-
-<p>デザイン(HTML)とロジック(PHP)は分離するのが基本ですが、現実的には両者が密接に混じり合う場面も出てきます。<br>
-そのようなコードは<code>template/html.php</code>に分離しています。HTMLの比重が高いのでtemplateフォルダに置いてあります</p>
-
-<p>例えばHTMLを修正したい場合は、次のような順番でHTMLを探すとよいでしょう</p>
-
-
-<ol>
-  <li>template/アクション名.html</li>
-  <li>template/html.php</li>
-  <li>action/アクション名.php</li>
-</ol>
 
 <h2>独自actionの追加</h2>
 

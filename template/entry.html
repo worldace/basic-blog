@@ -5,7 +5,6 @@
   <title>《記事タイトル》</title>
   <link href="《テンプレート》/base-blog.css" rel="stylesheet">
   <link href="《テンプレート》/blog.css" rel="stylesheet">
-  <link href="《テンプレート》/comment.css" rel="stylesheet">
   <link rel="icon" href="《テンプレート》/favicon.png" type="image/png">
   <link rel="alternate" type="application/atom+xml" href="《URL》?action=feed">
   <link rel="canonical" href="《記事URL》">
@@ -18,6 +17,7 @@
   <meta property="og:locale" content="ja_JP">
 
   <script src="《jQuery》"></script>
+  <style>《埋め込みCSS》</style>
 </head>
 <body>
 
@@ -32,14 +32,10 @@
 《記事》
 
 <aside>
-<ul class="socialbutton-list">
-  <li><a href="https://www.facebook.com/sharer.php?u=《%記事URL》&t=《%記事タイトル》" target="_blank"><img src="《テンプレート》/facebook-like.png" width="69" height="20"></a><a class="socialbutton-balloon facebook-like-count">0</a></li>
-  <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=《%記事URL》&title=《%記事タイトル》" target="_blank"><img src="《テンプレート》/hatena-bookmark.png" width="80" height="20"></a><a href="http://b.hatena.ne.jp/entry/《記事URL2》" class="socialbutton-balloon hatena-bookmark-count" target="_blank">0</a></li>
-  <li><a href="https://twitter.com/share?url=《%記事URL》&text=《%記事タイトル》" target="_blank"><img src="《テンプレート》/twitter-tweet.png" width="61" height="20"></a><a href="https://twitter.com/search?q=《%記事URL2》" class="socialbutton-balloon twitter-tweet-count" target="_blank">0</a></li>
-</ul>
+《ソーシャルボタン》
 </aside>
 
-<nav class="entry-prevnext">
+<nav class="prevnext-headline" style="margin: 60px auto;">
 《前の記事》
 《次の記事》
 </nav>
@@ -56,8 +52,38 @@
 
 
 <script src="《テンプレート》/blog.js" charset="utf-8"></script>
-<script src="《テンプレート》/comment.js" charset="utf-8"></script>
-<script src="《テンプレート》/socialbutton.js" charset="utf-8"></script>
+<script>$(function(){
+
+!function 最近見た記事を記録する(){
+    var url    = $("link[rel='canonical']").attr("href");
+    var title  = $("meta[property='og:title']").attr("content");
+    var latest = [];
+    var recent = [];
+
+    if(!url || !title || !localStorage){
+        return;
+    }
+
+    if(localStorage.browsing_history){ //データ構造 [{url, title}]
+        recent = JSON.parse(localStorage.browsing_history);
+    }
+
+    for(var i = 0; i < recent.length; i++){
+        if(recent[i].url == url){
+            continue;
+        }
+        latest.push(recent[i]);
+    }
+
+    latest.unshift({url: url, title: title});
+    latest.splice(10);
+    localStorage.browsing_history = JSON.stringify(latest);
+}();
+
+
+});</script>
+
+<script>《埋め込みJavaScript》</script>
 
 </body>
 </html>

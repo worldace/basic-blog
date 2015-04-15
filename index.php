@@ -1,14 +1,13 @@
 <?php
 //======================================================
 // ■Basic Blog
-$設定['バージョン'] = '1.00';
+$設定['バージョン'] = '1.01';
 //======================================================
 
 
 include('setting.php');
 include('action/php/function.php');
 include('action/php/boot.php');
-include("{$設定['テンプレート']}/html.php");
 
 
 switch($_GET['action']){
