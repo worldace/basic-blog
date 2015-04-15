@@ -36,6 +36,7 @@
     border-collapse: collapse;
     margin: 40px auto;
     text-align: center;
+    line-height: 1.6;
 }
 .contents caption{
     margin-bottom: 8px;

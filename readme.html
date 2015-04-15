@@ -240,11 +240,23 @@ RewriteRule ^(\d+)$ index.php?action=entry&amp;id=$1 [L,QSA]
 
 <h2>部品システム</h2>
 
-<p>HTMLとPHPを分離していくのが基本ですが、現実的には両者が密接に混じり合う場面も出てきます。<br>
-そのようなコードは部品と呼び<code>template/*.php</code>に分離しています</p>
+<p>HTMLとPHPを分離していくのが基本ですが、現実的には両者が密接に混じり合う場面も出てきます<br>
+そのようなコードは<em>部品</em>と呼び<code>template/*.php</code>に分離しています</p>
 
-<p>部品ファイルにはHTMLとPHPだけでなく、CSSやJavaScriptも一緒に記載されています</p>
+<p class="mininote">部品ファイルにはHTMLとPHPだけでなく、CSSやJavaScriptも一緒に記載することができます</p>
 
+<p>プログラム全体の流れとしては、部品を作成していき最後にテンプレートに貼り付けて出力するという流れになります</p>
+
+<table>
+<caption>部品ファイルの仕様</caption>
+<tr><th>仕様</th><th>説明</th></tr>
+<tr><td class="right">template/部品名.php</td><td class="left">部品ファイルのパス</td></tr>
+<tr><td class="right">function _部品名(引数)</td><td class="left">HTMLを作成してそれを返す関数<br>部品ファイルが読み込まれた時に自動実行されます</td></tr>
+<tr><td class="right">$設定['_部品名_CSS']</td><td class="left">CSSを記述する変数<br>変数の内容は《埋め込みCSS》に追加されます</td></tr>
+<tr><td class="right">$設定['_部品名_JavaScript']</td><td class="left">JavaScriptを記述する変数<br>変数の内容は《埋め込みJavaScript》に追加されます</td></tr>
+</table>
+
+<p>部品を作成する場合は<code>部品作成("部品名", 引数)</code>という関数を使用します</p>
 
 </div></article>
 

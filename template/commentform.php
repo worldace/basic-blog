@@ -17,12 +17,12 @@ function _commentform(){
 
 $設定['_コメントフォーム']
 =<<<───────────────────────────
-<form action="《URL》" method="POST" id="comment-form" class="comment-form" accept-charset="utf-8">
-<div class="form-line comment-form-line"><label>名前</label><input type="text" name="comment_name" value=""></div>
-<div class="form-line comment-form-line"><textarea name="comment_body"></textarea></div>
-<div class="form-line comment-form-line"><input type="submit" value="コメントする"></div>
+<form action="《URL》" method="POST" class="commentform" accept-charset="utf-8">
+<div class="form-line commentform-line"><label>名前</label><input type="text" name="comment_name" value=""></div>
+<div class="form-line commentform-line"><textarea name="comment_body"></textarea></div>
+<div class="form-line commentform-line"><input type="submit" value="コメントする"></div>
 <input type="hidden" name="entry_id" value="《記事ID》">
-<input type="password" name="password" class="comment-form-dummy"><input type="text" name="url" class="comment-form-dummy">
+<input type="password" name="password" class="commentform-dummy"><input type="text" name="url" class="commentform-dummy">
 </form>
 ───────────────────────────;
 
@@ -31,22 +31,22 @@ $設定['_コメントフォーム']
 $設定['_commentform_CSS']
 =<<<'───────────────────────────'
 
-.comment-form{
+.commentform{
     margin-top: 50px;
 }
-.comment-form-line{
+.commentform-line{
     width: 66%;
 }
-.comment-form textarea{
+.commentform textarea{
     width: 100%;
     height: 180px;
 }
-.comment-form input[type="text"]{
+.commentform input[type="text"]{
     width: 200px;
 }
-.comment-form input[type="submit"]{
+.commentform input[type="submit"]{
 }
-.comment-form-dummy{
+.commentform-dummy{
     display: none;
 }
 ───────────────────────────;
@@ -60,12 +60,12 @@ $(function () {
 $("input[name='comment_name']").val($.cookie("cn"));
 
 //--- スパム対策 ---//
-$(".comment-form").attr('action', $(".comment-form").attr('action') + '?action=commentpost');
-$(".comment-form-dummy").css({'display': 'none'});
+$(".commentform").attr('action', $(".commentform").attr('action') + '?action=commentpost');
+$(".commentform-dummy").css({'display': 'none'});
 
 
 //--- 入力チェック ---//
-$('.comment-form').submit(function() {
+$('.commentform').submit(function() {
     var textarea = $(this).find("textarea");
 
     if(textarea.val() == ''){
