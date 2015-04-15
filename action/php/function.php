@@ -48,7 +48,6 @@ function テキスト表示($str){
 }
 
 
-/* PHP5.3.0～用
 function テンプレート変換($検索対象, $設定){
     return preg_replace_callback('/《([^》]+)》/u',
 
@@ -78,23 +77,6 @@ function テンプレート変換($検索対象, $設定){
     },
 
     $検索対象);
-}*/
-
-
-function テンプレート変換($ソース, $変換関係){
-    $GLOBALS['_変換関係'] = $変換関係;
-    return preg_replace_callback('/《([^》]+)》/u', 'テンプレート変換コールバック', $ソース);
-}
-function テンプレート変換コールバック($match){
-    global $_変換関係;
-
-    $firstletter = substr($match[1], 0, 1);
-    switch($firstletter){
-        case "&": return h($_変換関係[substr($match[1], 1)]);
-        case "%": return rawurlencode($_変換関係[substr($match[1], 1)]);
-        case "?": ob_start(); eval(substr($match[1], 1) . ";"); return ob_get_clean();
-        default : return $_変換関係[$match[1]];
-    }
 }
 
 
