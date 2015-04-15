@@ -10,7 +10,7 @@ function _mainmenu(){
     global $設定;
 
     if(管理者なら()){
-        $設定['ツール一覧'] = _ツール一覧のHTML作成();
+        $設定['ツール一覧'] = _ツール一覧作成();
         $html = テンプレート変換($設定['_管理用メインメニュー'], $設定);
     }
     else{
@@ -21,7 +21,7 @@ function _mainmenu(){
 }
 
 
-function _ツール一覧のHTML作成(){
+function _ツール一覧作成(){
     global $設定;
 
     $dir = $設定['actionディレクトリ'] . '/tool';
