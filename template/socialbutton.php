@@ -13,18 +13,19 @@ function _socialbutton(){
 
 
 $設定['_socialbutton_HTML']
-=<<<───────────────────────────
+=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 <ul class="socialbutton-list">
   <li><a href="https://www.facebook.com/sharer.php?u=《%記事URL》&t=《%記事タイトル》" target="_blank"><img src="《テンプレート》/facebook-like.png" width="69" height="20"></a><a class="socialbutton-balloon facebook-like-count">0</a></li>
   <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=《%記事URL》&title=《%記事タイトル》" target="_blank"><img src="《テンプレート》/hatena-bookmark.png" width="80" height="20"></a><a href="http://b.hatena.ne.jp/entry/《記事URL2》" class="socialbutton-balloon hatena-bookmark-count" target="_blank">0</a></li>
   <li><a href="https://twitter.com/share?url=《%記事URL》&text=《%記事タイトル》" target="_blank"><img src="《テンプレート》/twitter-tweet.png" width="61" height="20"></a><a href="https://twitter.com/search?q=《%記事URL2》" class="socialbutton-balloon twitter-tweet-count" target="_blank">0</a></li>
 </ul>
 
-───────────────────────────;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
+
 
 
 $設定['_socialbutton_CSS']
-=<<<'───────────────────────────'
+=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 .socialbutton-list{
     margin-top: 45px;
     padding-left: 0;
@@ -84,11 +85,12 @@ iframe.twitter-share-button {
     text-decoration: none;
 }
 
-───────────────────────────;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
+
 
 
 $設定['_socialbutton_JavaScript']
-=<<<'───────────────────────────'
+=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 $(function () {
 
 var url = $("link[rel='canonical']").attr('href');
@@ -117,4 +119,4 @@ $.getJSON(twitter_api + '&callback=?', function(json){
 
 });
 
-───────────────────────────;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;

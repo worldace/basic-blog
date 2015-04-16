@@ -45,7 +45,7 @@ function _ツール一覧作成(){
 
 //一般用メニュー
 $設定['_mainmenu_HTML']
-=<<<───────────────────────────
+=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 <nav class="mainmenu dropdown">
 <button class="dropdown-button">メニュー<span class="dropdown-button-caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right">
@@ -61,13 +61,13 @@ $設定['_mainmenu_HTML']
   <li><a href="《URL》?action=login" rel="nofollow">ログイン</a></li>
 </ul>
 </nav>
-───────────────────────────;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 
 
 
 //管理者用メニュー
 $設定['_mainmenu_admin_HTML']
-=<<<───────────────────────────
+=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 <nav class="mainmenu dropdown">
 <button class="dropdown-button">メニュー<span class="dropdown-button-caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right">
@@ -93,12 +93,12 @@ $設定['_mainmenu_admin_HTML']
   <li><a href="《URL》?action=logout">ログアウト</a></li>
 </ul>
 </nav>
-───────────────────────────;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 
 
 
 $設定['_mainmenu_CSS']
-=<<<'───────────────────────────'
+=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 .mainmenu {
     text-align: right;
     position: relative;
@@ -222,13 +222,13 @@ $設定['_mainmenu_CSS']
     border-right-color: #fff;
 }
 
-───────────────────────────;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 
 
 
 
 $設定['_mainmenu_JavaScript']
-=<<<'───────────────────────────'
+=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 $(function () {
 
 var onmouse;
@@ -290,5 +290,5 @@ $(".dropdown-submenu > .dropdown-menu").on({
 
 });
 
-───────────────────────────;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 

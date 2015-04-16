@@ -16,7 +16,7 @@ function _commentform(){
 
 
 $設定['_commentform_HTML']
-=<<<───────────────────────────
+=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 <form action="《URL》" method="POST" class="commentform" accept-charset="utf-8">
 <div class="form-line commentform-line"><label>名前</label><input type="text" name="comment_name" value=""></div>
 <div class="form-line commentform-line"><textarea name="comment_body"></textarea></div>
@@ -24,12 +24,13 @@ $設定['_commentform_HTML']
 <input type="hidden" name="entry_id" value="《記事ID》">
 <input type="password" name="password" class="commentform-dummy"><input type="text" name="url" class="commentform-dummy">
 </form>
-───────────────────────────;
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 
 
 
 $設定['_commentform_CSS']
-=<<<'───────────────────────────'
+=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 
 .commentform{
     margin-top: 50px;
@@ -49,11 +50,13 @@ $設定['_commentform_CSS']
 .commentform-dummy{
     display: none;
 }
-───────────────────────────;
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
+
 
 
 $設定['_commentform_JavaScript']
-=<<<'───────────────────────────'
+=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 $(function () {
 
 //--- 名前欄にクッキーセット ---//
@@ -77,4 +80,4 @@ $('.commentform').submit(function() {
 
 });
 
-───────────────────────────;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;

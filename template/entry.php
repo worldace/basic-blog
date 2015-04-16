@@ -44,7 +44,7 @@ function _entry($entry) {
 
 
 $設定['_entry_HTML']
-=<<<───────────────────────────
+=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 <article id="article《記事ID》" class="article">
   <header class="article-header">
   <h1 class="article-title"><a href="《記事URL》">《記事タイトル》</a></h1>
@@ -64,7 +64,7 @@ $設定['_entry_HTML']
 </article>
 
 
-───────────────────────────;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 
 
 //CSSはblog.css

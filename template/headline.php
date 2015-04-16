@@ -43,18 +43,19 @@ function _headline($検索結果, $category = ""){
 
 
 $設定['_headline_HTML']
-=<<<───────────────────────────
+=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 <div class="headline-box">
 <span class="headline-time">《記事投稿時間》</span><span class="headline-category js-category-name">《記事メインカテゴリ》</span>
 <a href="《記事URL》"><img src="《記事サムネイル画像》" width="《サムネイル横幅》" height="《サムネイル縦幅》" class="headline-image"><h2 class="headline-title">《記事タイトル》</h2></a>
 </div>
 
-───────────────────────────;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
+
 
 
 
 $設定['_headline_CSS']
-=<<<'───────────────────────────'
+=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 .headline-box{
     width: 480px;
     display: inline-block;
@@ -99,5 +100,4 @@ $設定['_headline_CSS']
 }
 
 
-
-───────────────────────────;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
