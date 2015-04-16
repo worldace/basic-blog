@@ -122,7 +122,7 @@ function パスワードハッシュ(){
     static $hash;
 
     if (!isset($hash)) {
-        $hash = sha1(str_repeat($設定['パスワード'], 3) . $_SERVER['HTTP_USER_AGENT']);
+        $hash = sha1(str_repeat($設定['パスワード'], 2) . __FILE__);
     }
     return $hash;
 }
