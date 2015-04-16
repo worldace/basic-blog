@@ -47,7 +47,13 @@ function _lightindex($検索結果){
         $html .= "<tr><td><a href=\"{$entry['記事URL']}\">{$entry['記事タイトル']}</a></td><td>{$entry['記事カテゴリリンク']}</td><td><time>{$entry['記事投稿時間']}</time></td><td>{$entry['記事ページビュー数']}</td><td>{$entry['記事コメント数']}</td><td><time>{$entry['記事コメント最終時間']}</time></td></tr>\n";
     }
     
-    return $html;
+    if($html){
+        return 
+            "<table class=\"lightindex sortable\">" .
+            "<tr><th>タイトル</th><th>カテゴリ</th><th>投稿日</th><th title=\"アクセス数\">PV</th><th>レス</th><th>最終レス</th></tr>" .
+            $html .
+            "</table>";
+    }
 }
 
 
@@ -108,20 +114,5 @@ $設定['_lightindex_CSS']
 
 ───────────────────────────;
 
-
-
-$設定['_lightindex_JavaScript']
-=<<<'───────────────────────────'
-$(function () {
-
-//ライトインデックスの中身がなければ消去
-if($('.lightindex').find('td').length == 0){
-    $('.lightindex').hide();
-}
-
-
-});
-
-───────────────────────────;
 
 
