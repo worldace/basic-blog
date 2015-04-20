@@ -29,4 +29,4 @@ foreach($最新記事 as $entry){
 
 //表示して終了
 header("Content-Type: application/atom+xml; charset=UTF-8");
-テンプレート表示("{$設定['テンプレート']}/feed.html");
+print テンプレート変換(file_get_contents("{$設定['テンプレート']}/feed.html"), $設定);
