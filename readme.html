@@ -205,6 +205,7 @@ RewriteRule ^(\d+)$ index.php?action=entry&amp;id=$1 [L,QSA]
 <article class="article">
 <header class="article-header"><h1 class="article-title">テンプレートについて</h1></header>
 <div class="contents">
+<!--
 <p>自分用のテンプレートを作るには？</p>
 <ol>
   <li><code>templateフォルダ</code>を複製します。例えば複製したフォルダ名をAとします</li>
@@ -237,12 +238,13 @@ RewriteRule ^(\d+)$ index.php?action=entry&amp;id=$1 [L,QSA]
   <li>http://設置したURL/<b>?var=1</b></li>
   <li>http://設置したURL/?action=entry&amp;id=1<b>&amp;var=1</b></li>
 </ul>
-
+-->
+<p>作成中...</p>
 
 <h2>部品システム</h2>
 
 <p>HTMLとPHPを分離していくのが基本ですが、現実的には両者が密接に混じり合う場面も出てきます<br>
-そのようなコードは<em>部品</em>と呼び<code>template/*.php</code>に分離しています</p>
+そのようなコードは<em>部品</em>と呼び<code>action/parts/*.php</code>に分離しています</p>
 
 <p class="mininote">部品ファイルにはHTMLとPHPだけでなく、CSSやJavaScriptも一緒に記載することができます</p>
 
