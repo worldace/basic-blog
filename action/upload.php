@@ -55,15 +55,15 @@ for($i = 0; $i < count($_FILES['file']['tmp_name']); $i++){
             if(GDで縮小するなら()){
                 $ajaxresponse .= "<a href=\"{$UP['URL']}\" target=\"_blank\"><img src=\"{$設定['ベースURL']}{$UP['縮小画像のパス']}\" width=\"{$UP['縮小後の横幅']}\" height=\"{$UP['縮小後の縦幅']}\" class=\"{$UP['popup']}\"></a>";
             }
-            else{ //GDで縮小しない場合
+            else /* GDで縮小しない場合 */ {
                 $ajaxresponse .= "<a href=\"{$UP['URL']}\" target=\"_blank\"><img src=\"{$UP['URL']}\" width=\"{$UP['縮小後の横幅']}\" height=\"{$UP['縮小後の縦幅']}\" class=\"{$UP['popup']}\"></a>";
             }
         }
-        else { //画像サイズが制限以内の場合
+        else /* 画像サイズが制限以内の場合 */ {
             $ajaxresponse .= "<img src=\"{$UP['URL']}\" width=\"{$UP['横幅']}\" height=\"{$UP['縦幅']}\">";
         }
     }
-    else{ //アップロードファイルが画像以外の場合
+    else /* アップロードファイルが画像以外の場合 */ {
         $ajaxresponse .= "<a href=\"{$UP['URL']}\" target=\"_blank\">{$UP['ファイル名']}</a>";
     }
 }
