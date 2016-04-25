@@ -739,30 +739,6 @@ function Ping送信(){
 }
 
 
-function 変数一覧表示(){
-    global $設定;
-
-    print "<style>#debugvar{border:solid 1px #aaa;border-collapse:collapse;margin:30px auto;} #debugvar td{border:solid 1px #aaa; font-size:12px;min-width:300px; padding:2px;} #debugvar td:nth-child(odd){text-align:right;}</style>";
-    print "<table id='debugvar'>\n";
-    print "<caption>使用できる変数<caption>";
-
-    foreach($設定 as $key => $value){
-        if(is_scalar($value)) {
-            if(preg_match('/^_/', $key)){ continue; }
-            $value = h($value);
-            $value = nl2br($value);
-            if(preg_match('/パスワード/u', $key)){
-                $value = 'パスワードは表示されません';
-            }
-
-            print "<tr><td>《{$key}》</td><td>$value</td></tr>\n";
-        }
-    }
-
-    print "</table>";
-}
-
-
 function アイキャッチ画像検索($body){
     global $設定;
 

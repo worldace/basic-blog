@@ -41,12 +41,6 @@ if(!$_GET['action'] and GETなら()){
 開発用の設定();
 
 
-//変数一覧表示
-if($_GET['var'] == '1' and 管理者なら()){
-    register_shutdown_function('変数一覧表示');
-}
-
-
 //DBファイルがなければインストールへ
 if(!file_exists($設定['DBファイル'])) {
     include_once($設定['actionディレクトリ'] . '/php/install.php');
