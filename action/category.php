@@ -57,7 +57,6 @@ $設定['メインメニュー'] = 管理者なら() ? 部品("mainmenu_admin") 
   <meta property="og:locale" content="ja_JP">
 
   <script src="<?= $設定['jQuery'] ?>"></script>
-  <style><?= $設定['埋め込みCSS'] ?></style>
 </head>
 <body>
 
@@ -77,7 +76,6 @@ $設定['メインメニュー'] = 管理者なら() ? 部品("mainmenu_admin") 
 
 
 <script src="<?= $設定['テンプレート'] ?>/blog.js" charset="utf-8"></script>
-<script><?= $設定['埋め込みJavaScript'] ?></script>
 
 </body>
 </html>

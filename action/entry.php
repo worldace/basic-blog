@@ -86,7 +86,6 @@ $設定['記事'] = 部品("entry", $entry);
   <meta property="og:locale" content="ja_JP">
 
   <script src="<?= $設定['jQuery'] ?>"></script>
-  <style><?= $設定['埋め込みCSS'] ?></style>
 </head>
 <body>
 
@@ -152,7 +151,6 @@ $設定['記事'] = 部品("entry", $entry);
 
 });</script>
 
-<script><?= $設定['埋め込みJavaScript'] ?></script>
 
 </body>
 </html>

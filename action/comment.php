@@ -58,7 +58,6 @@ if(コメントが受付中なら($entry)){
   <link rel="icon" href="<?= $設定['テンプレート'] ?>/favicon.png" type="image/png">
 
   <script src="<?= $設定['jQuery'] ?>"></script>
-  <style><?= $設定['埋め込みCSS'] ?></style>
 </head>
 <body>
 
@@ -91,6 +90,5 @@ $(function(){
 
 });
 </script>
-<script><?= $設定['埋め込みJavaScript'] ?></script>
 </body>
 </html>

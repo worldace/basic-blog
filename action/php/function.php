@@ -8,23 +8,28 @@
 
 function 部品(){
     global $設定;
-    static $読み込み記録;
+    static $実行記録;
+    $css = $js = "";
 
-    $args = func_get_args();
-    $name = array_shift($args);
+    $引数   = func_get_args();
+    $部品名 = array_shift($引数);
 
-    include_once("{$設定['ディレクトリ']}/action/parts/{$name}.php");
-
-    $html = call_user_func_array("${name}_parts", $args);
+    include_once("{$設定['ディレクトリ']}/action/parts/{$部品名}.php");
+    $html = call_user_func_array("${部品名}_parts", $引数);
     
-    if(!$読み込み記録[$name]){
-        $設定['埋め込みCSS']        .= $css;
-        $設定['埋め込みJavaScript'] .= $js;
-        $読み込み記録[$name] = true;
+    if($実行記録[$部品名]){
+        return $html;
     }
+    else{
+        $実行記録[$部品名] = true;
 
-    return $html;
+        if($css){ $css = "<style>\n{$css}\n</style>\n"; }
+        if($js) { $js  = "<script>\n{$js}\n</script>\n"; }
+
+        return $css . $html . $js;
+    }
 }
+
 
 
 function テンプレート表示($file){

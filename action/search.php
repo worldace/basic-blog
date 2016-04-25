@@ -101,7 +101,6 @@ end:
     [name="search"]{ width: 240px; }
   </style>
   <script src="<?= $設定['jQuery'] ?>"></script>
-  <style><?= $設定['埋め込みCSS'] ?></style>
 </head>
 <body>
 
@@ -144,7 +143,6 @@ $(function(){
 
 });
 </script>
-<script><?= $設定['埋め込みJavaScript'] ?></script>
 
 
 </body>
