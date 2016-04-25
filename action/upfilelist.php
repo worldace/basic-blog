@@ -36,5 +36,43 @@ $設定['y'] = $_GET['y'];
 $設定['m'] = $_GET['m'];
 $設定['d'] = $_GET['d'];
 
-テンプレート表示("{$設定['テンプレート']}/upfilelist.html");
 
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title><?= $設定['ブログ名'] ?> アップリスト</title>
+  <link href="<?= $設定['テンプレート'] ?>/upload.css" rel="stylesheet">
+  <link rel="icon" href="<?= $設定['テンプレート'] ?>/favicon.png" type="image/png">
+
+  <script src="<?= $設定['jQuery'] ?>"></script>
+</head>
+<body>
+
+<header><a href="<?= $設定['URL'] ?>?action=uplist">アップリスト</a> / <a href="<?= $設定['URL'] ?>?action=uplist&y=<?= $設定['y'] ?>"><?= $設定['y'] ?>年</a><a href="<?= $設定['URL'] ?>?action=upfilelist&y=<?= $設定['y'] ?>&m=<?= $設定['m'] ?>&d=<?= $設定['d'] ?>"><?= $設定['m'] ?>月<?= $設定['d'] ?>日</a></header>
+
+
+<article class="main-contents">
+<table id="upfilelist">
+<caption><?= $設定['y'] ?>年<?= $設定['m'] ?>月<?= $設定['d'] ?>日 (<?= $設定['曜日'] ?>)</caption>
+<tr><th>投稿日</th><th>ファイル</th><th>サイズ</th><th>削除</th></tr>
+<?= $設定['アップファイル表'] ?>
+</table>
+</article>
+
+<script>
+$(function() {
+    //削除確認
+    $('.filedelete').click(function() {
+        $(this).parents("tr").addClass("delete-selected");
+        var flag = window.confirm("このファイルを削除しますか？");
+        $(this).parents("tr").removeClass("delete-selected");
+        return flag;
+    });
+});
+</script>
+
+</body>
+</html>

@@ -34,6 +34,7 @@ switch($_GET['action']){
     case 'tool'          : include('action/tool.php');          break;
     case 'login'         : include('action/login.php');         break;
     case 'logout'        : include('action/logout.php');        break;
+    case 'logincheck'    : include('action/logincheck.php');    break;
     case 'feed'          : include('action/feed.php');          break;
     default              : include('action/index.php');
 }

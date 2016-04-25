@@ -37,7 +37,23 @@ array($_POST['body']));
 if($設定['Ping送信'] == '○'){ Ping送信(); }
 
 
-//終了
 $設定['記事URL'] = 記事URL作成($設定['記事ID']);
-テンプレート表示("{$設定['テンプレート']}/refresh.html");
+
+
+
+?>
+<!DOCTYPE html>
+<html><body>
+<script>
+window.onload = function(){
+    if(window.opener.closed){
+        setTimeout(function(){ location.href = '<?= $設定['記事URL'] ?>'; }, 0);
+    }
+    else{
+        window.opener.location.href = '<?= $設定['記事URL'] ?>';
+        setTimeout(function(){ location.href = '<?= $設定['URL'] ?>?action=entryeditform&id=<?= $設定['記事ID'] ?>'; }, 0);
+    }
+};
+</script>
+</body></html>
 

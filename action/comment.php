@@ -46,5 +46,51 @@ if(コメントが受付中なら($entry)){
 }
 
 
-//表示して終了
-テンプレート表示("{$設定['テンプレート']}/comment.html");
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title><?= $設定['記事タイトル'] ?></title>
+  <link href="<?= $設定['テンプレート'] ?>/base-blog.css" rel="stylesheet">
+  <link href="<?= $設定['テンプレート'] ?>/blog.css" rel="stylesheet">
+  <link rel="icon" href="<?= $設定['テンプレート'] ?>/favicon.png" type="image/png">
+
+  <script src="<?= $設定['jQuery'] ?>"></script>
+  <style><?= $設定['埋め込みCSS'] ?></style>
+</head>
+<body>
+
+
+<header class="main-header">
+<h1 class="main-title"><a href="<?= $設定['URL'] ?>"><?= $設定['ブログ名'] ?></a></h1>
+</header>
+
+
+<article class="main-contents">
+
+<header class="article-header">
+<h1 class="article-title"><a href="<?= $設定['記事URL'] ?>"><?= $設定['記事タイトル'] ?></a></h1>
+</header>
+
+<article id="comments<?= $設定['記事ID'] ?>" class="comments" data-entry_id="<?= $設定['記事ID'] ?>">
+<?= $設定['コメント'] ?>
+</article>
+
+<?= $設定['コメントフォーム'] ?>
+</article>
+
+
+<script src="<?= $設定['テンプレート'] ?>/blog.js" charset="utf-8"></script>
+<script>
+$(function(){
+    var コメント番号 = $(".comment-no").text();
+    if(!コメント番号){ return false; }
+    $("textarea[name='comment_body']").val(">>" + コメント番号 + "\n");
+
+});
+</script>
+<script><?= $設定['埋め込みJavaScript'] ?></script>
+</body>
+</html>

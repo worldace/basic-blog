@@ -13,5 +13,19 @@ if (!自然数なら($_POST['id'])){ エラー('不正なIDです。'); }
 //削除処理
 データベース削除("delete from ブログ where 記事ID = {$_POST['id']}");
 
-//終了
-テンプレート表示("{$設定['テンプレート']}/close.html");
+
+?>
+<!DOCTYPE html>
+<html><body>
+<script>
+window.onload = function(){
+    if(window.opener.closed){
+        location.href = '<?= $設定['URL'] ?>';
+    }
+    else{
+        window.opener.location.href = '<?= $設定['URL'] ?>';
+        setTimeout(function(){ window.close(); }, 0);
+    }
+};
+</script>
+</body></html>

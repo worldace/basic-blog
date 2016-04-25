@@ -33,5 +33,80 @@ if(自然数なら($_GET['id'])){
 }
 
 
-//表示して終了
-テンプレート表示("{$設定['テンプレート']}/entrypostform.html");
+
+?>
+<!DOCTYPE html>
+<html lang="ja" class="dropzone">
+<head>
+  <meta charset="utf-8">
+  <title><?= $設定['ブログ名'] ?> 新規投稿</title>
+  <link href="<?= $設定['テンプレート'] ?>/base-admin.css" rel="stylesheet">
+  <link href="<?= $設定['テンプレート'] ?>/blog.css" rel="stylesheet">
+  <link href="<?= $設定['テンプレート'] ?>/post.css" rel="stylesheet">
+  <link rel="icon" href="<?= $設定['テンプレート'] ?>/favicon.png" type="image/png">
+  <link rel="index" href="<?= $設定['URL'] ?>">
+
+  <script src="<?= $設定['jQuery'] ?>"></script>
+</head>
+<body>
+
+
+<header class="main-header">
+<h1 class="main-title"><?= $設定['ブログ名'] ?></h1>
+</header>
+
+<article class="main-contents">
+<div class="tab">
+<ul>
+  <li class="tab-selected" id="tab-main">新規投稿</li>
+  <li id="tab-preview">プレビュー</li>
+  <li id="tab-thumbnail">サムネイル</li>
+  <li id="tab-setting">設定</li>
+</ul>
+<section id="tab-main-section" class="tab-selected">
+<form id="entrypost" action="<?= $設定['URL'] ?>?action=entrypost" method="POST">
+<div class="form-line"><label for="title">タイトル</label><input type="text" id="title" name="title" value="<?= h($設定['記事タイトル']) ?>"></div>
+<div class="form-line"><label for="category">カテゴリ</label><input type="text" id="category" class="candidate-dropdown" name="category" value="<?= h($設定['記事カテゴリ']) ?>" autocomplete="off"><ul class="candidate-list"><?= $設定['カテゴリ候補'] ?></ul></div>
+<div class="form-line"><textarea name="body" spellcheck="false"><?= $設定['記事本文'] ?></textarea></div>
+<div class="form-line"><input type="submit" name="submit" value="新規投稿"></div>
+<input type="hidden" name="entry-status" value="">
+</form></section>
+
+<section id="tab-preview-section">
+<iframe id="preview-iframe" src="<?= $設定['テンプレート'] ?>/preview.html" width="980" height="0" frameborder="0" scrolling="no"></iframe>
+</section>
+
+<section id="tab-thumbnail-section">
+<div id="thumbnail-image-wrapper" data-w="<?= $設定['サムネイル横幅'] ?>" data-h="<?= $設定['サムネイル縦幅'] ?>"></div>
+<button id="thumbnail-make" class="submit">サムネイルを作成する <span id="thumbnail-exists"></span></button>
+<div id="thumbnail-preview-wrapper"></div>
+</section>
+
+<section id="tab-setting">
+<table id="setting">
+<tr><th>記事の公開</th><td><select data-selected="" id="setting-entry-status"><option value="公開">公開する</option><option value="非公開">非公開にする</option></select></td></tr>
+</table>
+</section>
+</div>
+</article>
+
+<link rel="stylesheet" href="<?= $設定['テンプレート'] ?>/jquery.jcrop.css">
+<link rel="stylesheet" href="<?= $設定['テンプレート'] ?>/jquery.nprogress.css">
+<script src="<?= $設定['テンプレート'] ?>/jquery.selection.js" charset="utf-8"></script>
+<script src="<?= $設定['テンプレート'] ?>/jquery.ajaxqueue.js" charset="utf-8"></script>
+<script src="<?= $設定['テンプレート'] ?>/jquery.nprogress.js" charset="utf-8"></script>
+<script src="<?= $設定['テンプレート'] ?>/jquery.jcrop.js" charset="utf-8"></script>
+<script src="<?= $設定['テンプレート'] ?>/marked.js" charset="utf-8"></script>
+<script src="<?= $設定['テンプレート'] ?>/post.js" charset="utf-8"></script>
+
+<script>
+var ファイルサイズ制限  = <?= $設定['ファイルサイズ制限'] ?>;
+var $ファイルサイズ制限 = "<?= $設定['$ファイルサイズ制限'] ?>";
+var POST制限  = <?= $設定['POST制限'] ?>;
+var $POST制限 = "<?= $設定['$POST制限'] ?>";
+</script>
+<script src="<?= $設定['テンプレート'] ?>/dndupload.js" charset="utf-8"></script>
+
+
+</body>
+</html>

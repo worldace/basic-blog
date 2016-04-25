@@ -725,8 +725,10 @@ function 全カテゴリ(){
 function Ping送信(){
     global $設定;
 
-    $pingxml = file_get_contents("{$設定['テンプレート']}/ping.html");
-    $pingxml = テンプレート変換($pingxml, $設定);
+    $blog = h($設定['ブログ名']);
+    $url  = h($設定['URL']);
+
+    $pingxml = "<?xml version=\"1.0\" encoding=\"utf-8\"?><methodCall><methodName>weblogUpdates.ping</methodName><params><param><value>$blog</value></param><param><value>$url</value></param></params></methodCall>";
 
     $header  = array("Content-Type: text/xml", "Content-Length: " . strlen($pingxml));
     $context = array("http" => array("method"=>"POST", "header"=>implode("\r\n", $header), "content"=>$pingxml, "timeout"=>3));
@@ -829,7 +831,7 @@ function 開発用の設定(){
     global $設定;
 
     //開発環境なら
-    if($_SERVER['SERVER_SOFTWARE'] == 'PHP 5.6.0 Development Server'){
+    if($_SERVER['SERVER_SOFTWARE'] == 'PHP 7.0.0 Development Server'){
         error_reporting(E_ALL ^ E_NOTICE);
         ini_set('display_errors', 1);
 

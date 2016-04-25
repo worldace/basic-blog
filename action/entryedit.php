@@ -39,6 +39,20 @@ array($_POST['body']));
 $設定['記事ID']  = $_POST['id'];
 $設定['記事URL'] = 記事URL作成($設定['記事ID']);
 
-//終了
-テンプレート表示("{$設定['テンプレート']}/refresh.html");
 
+
+?>
+<!DOCTYPE html>
+<html><body>
+<script>
+window.onload = function(){
+    if(window.opener.closed){
+        setTimeout(function(){ location.href = '<?= $設定['記事URL'] ?>'; }, 0);
+    }
+    else{
+        window.opener.location.href = '<?= $設定['記事URL'] ?>';
+        setTimeout(function(){ location.href = '<?= $設定['URL'] ?>?action=entryeditform&id=<?= $設定['記事ID'] ?>'; }, 0);
+    }
+};
+</script>
+</body></html>

@@ -17,7 +17,7 @@ $設定['検索ワード'] = 検索ワードの正規化($_GET['search']);
 
 //検索ワードを入力してない場合は検索ページを表示する
 if($設定['検索ワード'] == ''){
-    テンプレート表示("{$設定['テンプレート']}/search.html");
+    goto end;
 }
 
 
@@ -36,7 +36,7 @@ $検索結果 = データベース取得($SQL文, $bindvalue);
 //見つからなかったら終了
 if(!$検索結果){
     $設定['検索情報'] = "「{$設定['検索ワード']}」は見つかりませんでした";
-    テンプレート表示("{$設定['テンプレート']}/search.html");
+    goto end;
 }
 
 //検索結果を作成
@@ -45,10 +45,6 @@ $設定['ライトインデックス'] = 部品作成("lightindex", $検索結�
 //ページめくり作成
 $_word = rawurlencode($設定['検索ワード']);
 $設定['ページめくり'] = 部品作成("paging", $_GET['page'], $設定['ライトインデックス記事表示件数'], count($検索結果), "{$設定['URL']}?action=search&search=$_word&page=");
-
-//結果を表示して終了
-テンプレート表示("{$設定['テンプレート']}/search.html");
-
 
 
 
@@ -85,3 +81,71 @@ function 検索用bindvalue($search){
     }
     return $bindvalue;
 }
+
+
+end:
+?>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title><?= $設定['ブログ名'] ?> 検索</title>
+  <link href="<?= $設定['テンプレート'] ?>/base-blog.css" rel="stylesheet">
+  <link href="<?= $設定['テンプレート'] ?>/blog.css" rel="stylesheet">
+  <link rel="icon" href="<?= $設定['テンプレート'] ?>/favicon.png" type="image/png">
+
+  <style>
+    .contents{ text-align: center;    margin-top: 60px; margin-bottom: 80px; }
+    .infobox-green{ margin-top: 80px; }
+    .infobox-green:empty{ display: none; }
+    [name="search"]{ width: 240px; }
+  </style>
+  <script src="<?= $設定['jQuery'] ?>"></script>
+  <style><?= $設定['埋め込みCSS'] ?></style>
+</head>
+<body>
+
+
+<header class="main-header">
+<h1 class="main-title"><a href="<?= $設定['URL'] ?>"><?= $設定['ブログ名'] ?></a></h1>
+<?= $設定['メインメニュー'] ?>
+</header>
+
+
+<article class="main-contents">
+<div class="contents">
+<form action="<?= $設定['URL'] ?>" method="GET" id="search" class="form-oneline"><input type="hidden" name="action" value="search">
+<input type="text" name="search" value="<?= h($設定['検索ワード']) ?>"><input type="submit" value="検索する">
+</form>
+<p class="infobox-green"><?= h($設定['検索情報']) ?></p>
+</div>
+
+<?= $設定['ライトインデックス'] ?>
+
+
+<?= $設定['ページめくり'] ?>
+</article>
+
+
+<script src="<?= $設定['テンプレート'] ?>/blog.js" charset="utf-8"></script>
+<script>
+$(function(){
+    var search = $("[name='search']");
+    search.focus();
+    search.val(search.val()); //キャレット位置を一番右に
+
+    $('#search').submit(function() {
+        if(search.val() == ''){
+            $(".infobox-green").html("検索ワードを入力してください");
+            search.focus();
+            return false;
+        }
+    });
+
+});
+</script>
+<script><?= $設定['埋め込みJavaScript'] ?></script>
+
+
+</body>
+</html>

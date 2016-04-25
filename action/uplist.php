@@ -71,5 +71,31 @@ if($年 < $今年){
 //表示して終了
 $設定['y'] = $年;
 $設定['アップ表'] = $表;
-テンプレート表示("{$設定['テンプレート']}/uplist.html");
 
+
+
+?>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title><?= $設定['ブログ名'] ?> アップリスト</title>
+  <link href="<?= $設定['テンプレート'] ?>/upload.css" rel="stylesheet">
+  <link rel="icon" href="<?= $設定['テンプレート'] ?>/favicon.png" type="image/png">
+</head>
+<body>
+
+
+<header><a href="<?= $設定['URL'] ?>?action=uplist">アップリスト</a> / <a href="<?= $設定['URL'] ?>?action=uplist&y=<?= $設定['y'] ?>"><?= $設定['y'] ?>年</a></header>
+
+<article class="main-contents">
+<table id="uplist">
+<caption><?= $設定['去年リンク'] ?> <?= $設定['y'] ?>年 <?= $設定['来年リンク'] ?></caption>
+<tr><th>1月</th><th>2月</th><th>3月</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>8月</th><th>9月</th><th>10月</th><th>11月</th><th>12月</th></tr>
+<?= $設定['アップ表'] ?>
+</table>
+</article>
+
+
+</body>
+</html>

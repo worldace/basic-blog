@@ -27,6 +27,20 @@ foreach($最新記事 as $entry){
 }
 
 
-//表示して終了
 header("Content-Type: application/atom+xml; charset=UTF-8");
-print テンプレート変換(file_get_contents("{$設定['テンプレート']}/feed.html"), $設定);
+
+
+?>
+<?xml version="1.0" encoding="utf-8" ?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ja">
+
+<title><?= h($設定['ブログ名']) ?></title>
+<link href="<?= $設定['URL'] ?>" />
+<link rel="self" href="<?= $設定['URL'] ?>?action=feed" />
+<author><name><?= h($設定['管理者']) ?></name></author>
+<updated><?= $設定['Atom更新時間'] ?></updated>
+<id><?= $設定['URL'] ?>?action=feed</id>
+
+<?= $設定['Atomエントリ'] ?>
+
+</feed>

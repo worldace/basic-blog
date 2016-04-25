@@ -1,6 +1,6 @@
 <?php
 //======================================================
-// ■ログインフォームを表示する (GET) / ログイン処理を行う (POST)
+// ■ログインフォームを表示する
 // 
 // http://127.0.0.1/basic-blog/?action=login
 // 呼び出し元: ../index.php
@@ -11,33 +11,56 @@
 if(!$設定['パスワード']){ エラー("パスワードが設定されていません<br>setting.phpでパスワードを設定してください。"); }
 
 
-//GETならログインフォームを表示して終了
-if(GETなら()){
-    $設定['query'] = $_GET['query'];
-    テンプレート表示("{$設定['テンプレート']}/login.html");
-}
+if($_GET['query']){ $設定['query'] = h($_GET['query']); }
 
-//POSTならパスワードを確認して飛ばす
 
-//総当たり攻撃対策
-if(ログイン失敗回数() > $設定['ログイン試行可能回数'] and $設定['ログイン試行可能回数'] > -1){
-    エラー('次の時間帯までログインできません');
-}
 
-//パスワードが正しいなら
-if($_POST['password'] === $設定['パスワード']){
-    //クッキーに保存して
-    setcookie("p", パスワードハッシュ(), $_SERVER['REQUEST_TIME']+60*60*24*$設定['管理者用クッキー有効日数']);
+?>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title><?= $設定['ブログ名'] ?> ログイン</title>
+  <link href="<?= $設定['テンプレート'] ?>/base-admin.css" rel="stylesheet">
+  <link href="<?= $設定['テンプレート'] ?>/blog.css" rel="stylesheet">
+  <link rel="icon" href="<?= $設定['テンプレート'] ?>/favicon.png" type="image/png">
 
-    //来た所に飛ばす
-    if($_POST['query']){ リダイレクト("{$設定['URL']}?{$_POST['query']}"); }
-    else               { リダイレクト($設定['URL']); }
-}
-//パスワードが間違いなら
-else {
-    if($設定['ログイン試行可能回数'] > -1){ ログイン失敗を記録する(); }
+  <style>
+    #login{ text-align: center;    margin-top: 180px; }
+    #login input[name="password"]{ width: 220px; }
+  </style>
+  <script src="<?= $設定['jQuery'] ?>"></script>
+</head>
+<body>
 
-    setcookie("p");
-    エラー("パスワードが違います");
-}
 
+<header class="main-header">
+<h1 class="main-title"><?= $設定['ブログ名'] ?></h1>
+</header>
+
+<article class="main-contents">
+<form id="login" action="<?= $設定['URL'] ?>?action=logincheck" method="POST" class="form-oneline">
+<input type="password" name="password" value=""><input type="submit" name="submit" value="ログイン">
+<input type="hidden" name="query" value="<?= $設定['query'] ?>">
+</form>
+</article>
+
+
+<script>
+$(function(){
+    var password = $("#login input[name='password']");
+    password.focus();
+
+    $('#login').submit(function() {
+        if(password.val() == ''){
+            alert('パスワードを入力してください');
+            password.focus();
+            return false;
+        }
+    });
+});
+</script>
+
+</body>
+</html>
