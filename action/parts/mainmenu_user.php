@@ -9,25 +9,24 @@
 function mainmenu_user_parts(){
     global $設定;
 
-    $template=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    return <<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 <nav class="mainmenu dropdown">
 <button class="dropdown-button">メニュー<span class="dropdown-button-caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right">
-  <li><a href="《URL》?action=light">ライトモード</a></li>
-  <li><a href="《URL》?action=categorylist">カテゴリ一覧</a></li>
-  <li><a href="《URL》?action=search">記事検索</a></li>
+  <li><a href="{$設定['URL']}?action=light">ライトモード</a></li>
+  <li><a href="{$設定['URL']}?action=categorylist">カテゴリ一覧</a></li>
+  <li><a href="{$設定['URL']}?action=search">記事検索</a></li>
   <li class="dropdown-submenu"><a>最近見た記事</a>
     <ul class="dropdown-menu browsing-history">
       <li><a>(なし)</a></li>
     </ul></li>
-  <li><a href="《URL》">トップページ</a></li>
+  <li><a href="{$設定['URL']}">トップページ</a></li>
   <li class="dropdown-separate"></li>
-  <li><a href="《URL》?action=login" rel="nofollow">ログイン</a></li>
+  <li><a href="{$設定['URL']}?action=login" rel="nofollow">ログイン</a></li>
 </ul>
 </nav>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 
-    return テンプレート変換($template, $設定);
 }
 
 

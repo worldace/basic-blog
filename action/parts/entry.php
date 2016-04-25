@@ -9,27 +9,6 @@
 function entry_parts($entry) {
     global $設定;
 
-    $template=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-<article id="article《記事ID》" class="article">
-  <header class="article-header">
-  <h1 class="article-title"><a href="《記事URL》">《記事タイトル》</a></h1>
-  <ul class="article-header-list">
-    <li class="article-header-date"><time datetime="《ISO8601》">《記事投稿時間》</time></li>
-    <li class="article-header-category">《記事カテゴリリンク》</li>
-    <li class="article-header-author">《記事投稿者》</li>
-    《管理用:記事複製リンク》
-    《管理用:記事編集リンク》
-    <li class="article-header-pageview">《記事ページビュー数》</li>
-    <li class="article-header-commentlink"><a href="《記事URL》#comments《記事ID》">コメント</a> 《記事コメント数文字列》</li>
-  </ul>
-  </header>
-  <div id="contens《記事ID》" class="contents">
-  《記事本文》
-  </div>
-</article>
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 
     $entry['記事URL']      = 記事URL作成($entry['記事ID']);
     $entry['記事投稿時間'] = 日付変換($entry['記事投稿時間'], 5);
@@ -57,8 +36,29 @@ function entry_parts($entry) {
         $entry['管理用:記事編集リンク'] = "<li class=\"article-header-editlink js-editlink\"><a href=\"{$設定['URL']}?action=entryeditform&id={$entry['記事ID']}\" target=\"_blank\">編集</a></li>";
     }
 
-    $設定 += $entry;
-    return テンプレート変換($template, $entry);
+
+    return <<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<article id="article{$entry['記事ID']}" class="article">
+  <header class="article-header">
+  <h1 class="article-title"><a href="{$entry['記事URL']}">{$entry['記事タイトル']}</a></h1>
+  <ul class="article-header-list">
+    <li class="article-header-date"><time datetime="{$entry['ISO8601']}">{$entry['記事投稿時間']}</time></li>
+    <li class="article-header-category">{$entry['記事カテゴリリンク']}</li>
+    <li class="article-header-author">{$entry['記事投稿者']}</li>
+    {$entry['管理用:記事複製リンク']}
+    {$entry['管理用:記事編集リンク']}
+    <li class="article-header-pageview">{$entry['記事ページビュー数']}</li>
+    <li class="article-header-commentlink"><a href="{$entry['記事URL']}#comments{$entry['記事ID']}">コメント</a> {$entry['記事コメント数文字列']}</li>
+  </ul>
+  </header>
+  <div id="contens{$entry['記事ID']}" class="contents">
+  {$entry['記事本文']}
+  </div>
+</article>
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
+
 }
 
 

@@ -9,35 +9,6 @@
 function mainmenu_admin_parts(){
     global $設定;
 
-    $template=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-<nav class="mainmenu dropdown">
-<button class="dropdown-button">メニュー<span class="dropdown-button-caret"></span></button>
-<ul class="dropdown-menu dropdown-menu-right">
-  <li><a href="《URL》?action=light">ライトモード</a></li>
-  <li><a href="《URL》?action=categorylist">カテゴリ一覧</a></li>
-  <li><a href="《URL》?action=search">記事検索</a></li>
-  <li class="dropdown-submenu"><a>最近見た記事</a>
-    <ul class="dropdown-menu browsing-history">
-      <li><a>(なし)</a></li>
-    </ul></li>
-  <li><a href="《URL》">トップページ</a></li>
-  <li class="dropdown-separate"></li>
-  <li class="js-postlink"><a href="《URL》?action=entrypostform" target="_blank">新規投稿</a></li>
-  <li><a href="《URL》?action=uplist" target="_blank">アップリスト</a></li>
-  <li class="dropdown-submenu"><a>ツール</a>
-      <ul class="dropdown-menu">
-        《ツール一覧》
-      <li class="dropdown-separate"></li>
-        <li><a href="《テンプレート》/@design.html" target="_blank">デザイン見本</a></li>
-        <li><a href="《ベースURL》readme.html" target="_blank">説明書</a></li>
-    </ul></li>
-  <li><a href="《URL》?action=login">ログイン</a></li>
-  <li><a href="《URL》?action=logout">ログアウト</a></li>
-</ul>
-</nav>
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
-
-
     //ツール一覧を作成する
     $dir = $設定['actionディレクトリ'] . '/tool';
     foreach(ファイル一覧取得($dir) as $file){
@@ -52,7 +23,34 @@ function mainmenu_admin_parts(){
         }
     }
 
-    return テンプレート変換($template, $設定);
+    return <<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<nav class="mainmenu dropdown">
+<button class="dropdown-button">メニュー<span class="dropdown-button-caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right">
+  <li><a href="{$設定['URL']}?action=light">ライトモード</a></li>
+  <li><a href="{$設定['URL']}?action=categorylist">カテゴリ一覧</a></li>
+  <li><a href="{$設定['URL']}?action=search">記事検索</a></li>
+  <li class="dropdown-submenu"><a>最近見た記事</a>
+    <ul class="dropdown-menu browsing-history">
+      <li><a>(なし)</a></li>
+    </ul></li>
+  <li><a href="{$設定['URL']}">トップページ</a></li>
+  <li class="dropdown-separate"></li>
+  <li class="js-postlink"><a href="{$設定['URL']}?action=entrypostform" target="_blank">新規投稿</a></li>
+  <li><a href="{$設定['URL']}?action=uplist" target="_blank">アップリスト</a></li>
+  <li class="dropdown-submenu"><a>ツール</a>
+      <ul class="dropdown-menu">
+        {$設定['ツール一覧']}
+      <li class="dropdown-separate"></li>
+        <li><a href="{$設定['テンプレート']}/@design.html" target="_blank">デザイン見本</a></li>
+        <li><a href="{$設定['ベースURL']}readme.html" target="_blank">説明書</a></li>
+    </ul></li>
+  <li><a href="{$設定['URL']}?action=login">ログイン</a></li>
+  <li><a href="{$設定['URL']}?action=logout">ログアウト</a></li>
+</ul>
+</nav>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
+
 }
 
 

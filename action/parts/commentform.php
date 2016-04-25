@@ -10,17 +10,16 @@
 function commentform_parts(){
     global $設定;
 
-    $template=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-<form action="《URL》" method="POST" class="commentform" accept-charset="utf-8">
+    return <<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<form action="{$設定['URL']}" method="POST" class="commentform" accept-charset="utf-8">
 <div class="form-line commentform-line"><label>名前</label><input type="text" name="comment_name" value=""></div>
 <div class="form-line commentform-line"><textarea name="comment_body"></textarea></div>
 <div class="form-line commentform-line"><input type="submit" value="コメントする"></div>
-<input type="hidden" name="entry_id" value="《記事ID》">
+<input type="hidden" name="entry_id" value="{$設定['記事ID']}">
 <input type="password" name="password" class="commentform-dummy"><input type="text" name="url" class="commentform-dummy">
 </form>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 
-    return テンプレート変換($template, $設定);
 }
 
 
