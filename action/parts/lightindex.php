@@ -6,7 +6,7 @@
 //======================================================
 
 
-function _lightindex($検索結果){
+function lightindex_parts($検索結果){
     global $設定;
 
     foreach($検索結果 as $entry){
@@ -57,8 +57,7 @@ function _lightindex($検索結果){
 }
 
 
-$設定['_lightindex_CSS']
-=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+$css=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 .lightindex{
     width: 100%;
     table-layout: fixed;

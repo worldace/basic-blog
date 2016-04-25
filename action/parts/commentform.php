@@ -7,16 +7,10 @@
 
 
 
-function _commentform(){
+function commentform_parts(){
     global $設定;
 
-    return テンプレート変換($設定['_commentform_HTML'], $設定);
-}
-
-
-
-$設定['_commentform_HTML']
-=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    $template=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 <form action="《URL》" method="POST" class="commentform" accept-charset="utf-8">
 <div class="form-line commentform-line"><label>名前</label><input type="text" name="comment_name" value=""></div>
 <div class="form-line commentform-line"><textarea name="comment_body"></textarea></div>
@@ -24,13 +18,17 @@ $設定['_commentform_HTML']
 <input type="hidden" name="entry_id" value="《記事ID》">
 <input type="password" name="password" class="commentform-dummy"><input type="text" name="url" class="commentform-dummy">
 </form>
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 
+    return テンプレート変換($template, $設定);
+}
 
 
-$設定['_commentform_CSS']
-=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+
+
+
+
+$css=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 
 .commentform{
     margin-top: 50px;
@@ -55,8 +53,7 @@ $設定['_commentform_CSS']
 
 
 
-$設定['_commentform_JavaScript']
-=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+$js=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 $(function () {
 
 //--- 名前欄にクッキーセット ---//

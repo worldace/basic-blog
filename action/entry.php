@@ -60,7 +60,7 @@ $設定['記事URL']  = 記事URL作成($entry['記事ID']);
 $設定['記事URL2'] = preg_replace("/^https*:\/\//", "", $設定['記事URL']);
 
 
-$設定['メインメニュー']   = 部品("mainmenu");
+$設定['メインメニュー']   = 管理者なら() ? 部品("mainmenu_admin") : 部品("mainmenu_user");
 $設定['ソーシャルボタン'] = 部品("socialbutton");
 $設定['記事'] = 部品("entry", $entry);
 

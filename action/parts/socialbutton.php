@@ -5,15 +5,10 @@
 // 呼び出し元: ../action/php/function.php 部品()
 //======================================================
 
-function _socialbutton(){
+function socialbutton_parts(){
     global $設定;
 
-    return テンプレート変換($設定['_socialbutton_HTML'], $設定);
-}
-
-
-$設定['_socialbutton_HTML']
-=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    $template=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 <ul class="socialbutton-list">
   <li><a href="https://www.facebook.com/sharer.php?u=《%記事URL》&t=《%記事タイトル》" target="_blank"><img src="《テンプレート》/facebook-like.png" width="69" height="20"></a><a class="socialbutton-balloon facebook-like-count">0</a></li>
   <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=《%記事URL》&title=《%記事タイトル》" target="_blank"><img src="《テンプレート》/hatena-bookmark.png" width="80" height="20"></a><a href="http://b.hatena.ne.jp/entry/《記事URL2》" class="socialbutton-balloon hatena-bookmark-count" target="_blank">0</a></li>
@@ -23,9 +18,13 @@ $設定['_socialbutton_HTML']
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 
 
+    return テンプレート変換($template, $設定);
+}
 
-$設定['_socialbutton_CSS']
-=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+
+
+
+$css=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 .socialbutton-list{
     margin-top: 45px;
     padding-left: 0;
@@ -89,8 +88,7 @@ iframe.twitter-share-button {
 
 
 
-$設定['_socialbutton_JavaScript']
-=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+$js=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 $(function () {
 
 var url = $("link[rel='canonical']").attr('href');

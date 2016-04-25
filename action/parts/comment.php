@@ -7,8 +7,14 @@
 
 
 
-function _comment($検索結果, $i = 1){
+function comment_parts($検索結果, $i = 1){
     global $設定;
+
+    $template=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<article id="comment《記事ID》-《コメントID》" class="comment" data-comment_id="《コメントID》">
+<header class="comment-header"><span class="comment-no">《コメント番号リンク》</span><span class="comment-name" data-comment-site="《コメントサイト》">《コメント名前》</span><time class="comment-date">《コメント投稿時間》</time>《管理用:コメント削除リンク》</header>
+<p class="comment-body">《コメント本文》</p></article>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 
     foreach($検索結果 as $comment){
         $comment['コメント番号'] = $設定['コメント最大番号'] = $i;
@@ -38,23 +44,14 @@ function _comment($検索結果, $i = 1){
             $comment['管理用:コメント削除リンク'] = "<a href=\"{$設定['URL']}?action=commentdelete\" class=\"comment-delete\">.</a>";
         }
 
-        $html .= テンプレート変換($設定['_comment_HTML'], $comment);
+        $html .= テンプレート変換($template, $comment);
     }
     return $html;
 }
 
-$設定['_comment_HTML']
-=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-<article id="comment《記事ID》-《コメントID》" class="comment" data-comment_id="《コメントID》">
-<header class="comment-header"><span class="comment-no">《コメント番号リンク》</span><span class="comment-name" data-comment-site="《コメントサイト》">《コメント名前》</span><time class="comment-date">《コメント投稿時間》</time>《管理用:コメント削除リンク》</header>
-<p class="comment-body">《コメント本文》</p></article>
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
-
-
-$設定['_comment_CSS']
-=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+$css=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 .comments {
     margin: 50px 0;
 }
@@ -170,8 +167,7 @@ $設定['_comment_CSS']
 
 
 
-$設定['_comment_JavaScript']
-=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+$js=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 $(function () {
 
 

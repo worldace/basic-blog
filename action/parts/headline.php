@@ -6,8 +6,16 @@
 //======================================================
 
 
-function _headline($検索結果, $category = ""){
+function headline_parts($検索結果, $category = ""){
     global $設定;
+
+    $template=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<div class="headline-box">
+<span class="headline-time">《記事投稿時間》</span><span class="headline-category js-category-name">《記事メインカテゴリ》</span>
+<a href="《記事URL》"><img src="《記事サムネイル画像》" width="《サムネイル横幅》" height="《サムネイル縦幅》" class="headline-image"><h2 class="headline-title">《記事タイトル》</h2></a>
+</div>
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 
     foreach($検索結果 as $entry){
         $i++;
@@ -35,27 +43,16 @@ function _headline($検索結果, $category = ""){
         $entry['サムネイル横幅'] = $設定['サムネイル横幅'];
         $entry['サムネイル縦幅'] = $設定['サムネイル縦幅'];
 
-        $html .= テンプレート変換($設定['_headline_HTML'], $entry);
+        $html .= テンプレート変換($template, $entry);
     }
     
     return $html;
 }
 
 
-$設定['_headline_HTML']
-=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-<div class="headline-box">
-<span class="headline-time">《記事投稿時間》</span><span class="headline-category js-category-name">《記事メインカテゴリ》</span>
-<a href="《記事URL》"><img src="《記事サムネイル画像》" width="《サムネイル横幅》" height="《サムネイル縦幅》" class="headline-image"><h2 class="headline-title">《記事タイトル》</h2></a>
-</div>
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 
 
-
-
-$設定['_headline_CSS']
-=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+$css=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 .headline-box{
     width: 480px;
     display: inline-block;

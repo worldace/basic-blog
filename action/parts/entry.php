@@ -6,8 +6,30 @@
 //======================================================
 
 
-function _entry($entry) {
+function entry_parts($entry) {
     global $設定;
+
+    $template=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<article id="article《記事ID》" class="article">
+  <header class="article-header">
+  <h1 class="article-title"><a href="《記事URL》">《記事タイトル》</a></h1>
+  <ul class="article-header-list">
+    <li class="article-header-date"><time datetime="《ISO8601》">《記事投稿時間》</time></li>
+    <li class="article-header-category">《記事カテゴリリンク》</li>
+    <li class="article-header-author">《記事投稿者》</li>
+    《管理用:記事複製リンク》
+    《管理用:記事編集リンク》
+    <li class="article-header-pageview">《記事ページビュー数》</li>
+    <li class="article-header-commentlink"><a href="《記事URL》#comments《記事ID》">コメント</a> 《記事コメント数文字列》</li>
+  </ul>
+  </header>
+  <div id="contens《記事ID》" class="contents">
+  《記事本文》
+  </div>
+</article>
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 
     $entry['記事URL']      = 記事URL作成($entry['記事ID']);
     $entry['記事投稿時間'] = 日付変換($entry['記事投稿時間'], 5);
@@ -36,35 +58,8 @@ function _entry($entry) {
     }
 
     $設定 += $entry;
-    return テンプレート変換($設定['_entry_HTML'], $entry);
+    return テンプレート変換($template, $entry);
 }
-
-
-
-
-
-$設定['_entry_HTML']
-=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-<article id="article《記事ID》" class="article">
-  <header class="article-header">
-  <h1 class="article-title"><a href="《記事URL》">《記事タイトル》</a></h1>
-  <ul class="article-header-list">
-    <li class="article-header-date"><time datetime="《ISO8601》">《記事投稿時間》</time></li>
-    <li class="article-header-category">《記事カテゴリリンク》</li>
-    <li class="article-header-author">《記事投稿者》</li>
-    《管理用:記事複製リンク》
-    《管理用:記事編集リンク》
-    <li class="article-header-pageview">《記事ページビュー数》</li>
-    <li class="article-header-commentlink"><a href="《記事URL》#comments《記事ID》">コメント</a> 《記事コメント数文字列》</li>
-  </ul>
-  </header>
-  <div id="contens《記事ID》" class="contents">
-  《記事本文》
-  </div>
-</article>
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 
 
 //CSSはblog.css

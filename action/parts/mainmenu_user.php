@@ -1,51 +1,15 @@
 <?php
 //======================================================
-// ■メインメニュー部品
+// ■メインメニュー部品 (一般ユーザ用)
 // 
 // 呼び出し元: ../action/php/function.php 部品()
 //======================================================
 
 
-function _mainmenu(){
+function mainmenu_user_parts(){
     global $設定;
 
-    //管理者と一般ユーザではメニューが異なる
-    if(管理者なら()){
-        $設定['ツール一覧'] = _ツール一覧作成();
-        $html = テンプレート変換($設定['_mainmenu_admin_HTML'], $設定);
-    }
-    else{
-        $html = テンプレート変換($設定['_mainmenu_HTML'], $設定);
-    }
-
-    return $html;
-}
-
-
-function _ツール一覧作成(){
-    global $設定;
-
-    $dir = $設定['actionディレクトリ'] . '/tool';
-
-    foreach(ファイル一覧取得($dir) as $file){
-        if(pathinfo($file, PATHINFO_EXTENSION) != "php"){ continue; }
-
-        $contents = file("$dir/$file");
-
-        if(preg_match('|■(.+)|u', $contents[1], $match)){ //ツール名はファイルの2行目に書く仕様
-            $tool  = pathinfo($file, PATHINFO_FILENAME);
-            $name  = rtrim($match[1]);
-            $html .= "<li><a href=\"{$設定['URL']}?action=tool&tool=$tool\" target=\"_blank\">$name</a></li>";
-        }
-    }
-    return $html;
-}
-
-
-
-//一般用メニュー
-$設定['_mainmenu_HTML']
-=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    $template=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 <nav class="mainmenu dropdown">
 <button class="dropdown-button">メニュー<span class="dropdown-button-caret"></span></button>
 <ul class="dropdown-menu dropdown-menu-right">
@@ -63,42 +27,16 @@ $設定['_mainmenu_HTML']
 </nav>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
 
-
-
-//管理者用メニュー
-$設定['_mainmenu_admin_HTML']
-=<<<━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-<nav class="mainmenu dropdown">
-<button class="dropdown-button">メニュー<span class="dropdown-button-caret"></span></button>
-<ul class="dropdown-menu dropdown-menu-right">
-  <li><a href="《URL》?action=light">ライトモード</a></li>
-  <li><a href="《URL》?action=categorylist">カテゴリ一覧</a></li>
-  <li><a href="《URL》?action=search">記事検索</a></li>
-  <li class="dropdown-submenu"><a>最近見た記事</a>
-    <ul class="dropdown-menu browsing-history">
-      <li><a>(なし)</a></li>
-    </ul></li>
-  <li><a href="《URL》">トップページ</a></li>
-  <li class="dropdown-separate"></li>
-  <li class="js-postlink"><a href="《URL》?action=entrypostform" target="_blank">新規投稿</a></li>
-  <li><a href="《URL》?action=uplist" target="_blank">アップリスト</a></li>
-  <li class="dropdown-submenu"><a>ツール</a>
-      <ul class="dropdown-menu">
-        《ツール一覧》
-      <li class="dropdown-separate"></li>
-        <li><a href="《テンプレート》/@design.html" target="_blank">デザイン見本</a></li>
-        <li><a href="《ベースURL》readme.html" target="_blank">説明書</a></li>
-    </ul></li>
-  <li><a href="《URL》?action=login">ログイン</a></li>
-  <li><a href="《URL》?action=logout">ログアウト</a></li>
-</ul>
-</nav>
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━;
+    return テンプレート変換($template, $設定);
+}
 
 
 
-$設定['_mainmenu_CSS']
-=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+
+
+
+
+$css=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 .mainmenu {
     text-align: right;
     position: relative;
@@ -227,8 +165,7 @@ $設定['_mainmenu_CSS']
 
 
 
-$設定['_mainmenu_JavaScript']
-=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
+$js=<<<'━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 $(function () {
 
 var onmouse;

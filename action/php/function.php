@@ -15,11 +15,11 @@ function 部品(){
 
     include_once("{$設定['ディレクトリ']}/action/parts/{$name}.php");
 
-    $html = call_user_func_array("_$name", $args);
+    $html = call_user_func_array("${name}_parts", $args);
     
     if(!$読み込み記録[$name]){
-        $設定['埋め込みCSS']        .= $設定["_{$name}_CSS"];
-        $設定['埋め込みJavaScript'] .= $設定["_{$name}_JavaScript"];
+        $設定['埋め込みCSS']        .= $css;
+        $設定['埋め込みJavaScript'] .= $js;
         $読み込み記録[$name] = true;
     }
 

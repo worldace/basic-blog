@@ -36,7 +36,7 @@ $_category = rawurlencode($_GET['category']);
 $設定['ページめくり']   = 部品("paging", $_GET['page'], $設定['ライトインデックス記事表示件数'], count($検索結果), "{$設定['URL']}?action=category&category=$_category&page=");
 
 //メニュー作成
-$設定['メインメニュー'] = 部品("mainmenu");
+$設定['メインメニュー'] = 管理者なら() ? 部品("mainmenu_admin") : 部品("mainmenu_user");
 
 
 
