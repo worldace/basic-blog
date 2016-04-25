@@ -13,7 +13,7 @@ foreach(全カテゴリ() as $category => $count){
 }
 
 //メニュー作成
-$設定['メインメニュー'] = 部品作成("mainmenu");
+$設定['メインメニュー'] = 部品("mainmenu");
 
 
 

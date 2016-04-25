@@ -6,14 +6,14 @@
 //======================================================
 
 
-function 部品作成(){
+function 部品(){
     global $設定;
     static $読み込み記録;
 
     $args = func_get_args();
     $name = array_shift($args);
 
-    include_once("{$設定['テンプレート']}/{$name}.php");
+    include_once("{$設定['ディレクトリ']}/action/parts/{$name}.php");
 
     $html = call_user_func_array("_$name", $args);
     
@@ -831,7 +831,7 @@ function 開発用の設定(){
     global $設定;
 
     //開発環境なら
-    if($_SERVER['SERVER_SOFTWARE'] == 'PHP 7.0.0 Development Server'){
+    if($_SERVER['HTTP_HOST'] == '127.0.0.1'){
         error_reporting(E_ALL ^ E_NOTICE);
         ini_set('display_errors', 1);
 

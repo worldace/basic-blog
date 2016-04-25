@@ -26,17 +26,17 @@ else{
 
 
 //検索結果のHTMLを作成する
-$設定['ライトインデックス'] = 部品作成("lightindex", $検索結果);
+$設定['ライトインデックス'] = 部品("lightindex", $検索結果);
 
 if(!$設定['ライトインデックス']){ エラー('カテゴリが見つかりませんでした'); }
 
 
 //ページめくり作成
 $_category = rawurlencode($_GET['category']);
-$設定['ページめくり']   = 部品作成("paging", $_GET['page'], $設定['ライトインデックス記事表示件数'], count($検索結果), "{$設定['URL']}?action=category&category=$_category&page=");
+$設定['ページめくり']   = 部品("paging", $_GET['page'], $設定['ライトインデックス記事表示件数'], count($検索結果), "{$設定['URL']}?action=category&category=$_category&page=");
 
 //メニュー作成
-$設定['メインメニュー'] = 部品作成("mainmenu");
+$設定['メインメニュー'] = 部品("mainmenu");
 
 
 

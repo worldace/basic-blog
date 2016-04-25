@@ -39,10 +39,10 @@ $設定 += $comment;
 //HTML作成
 $設定['記事URL'] = 記事URL作成($entry['記事ID']);
 
-$設定['コメント'] = 部品作成("comment", array($comment), $設定['コメント番号']);
+$設定['コメント'] = 部品("comment", array($comment), $設定['コメント番号']);
 
 if(コメントが受付中なら($entry)){
-    $設定['コメントフォーム'] = 部品作成("commentform");
+    $設定['コメントフォーム'] = 部品("commentform");
 }
 
 
