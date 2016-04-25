@@ -744,7 +744,7 @@ function 変数一覧表示(){
 
     print "<style>#debugvar{border:solid 1px #aaa;border-collapse:collapse;margin:30px auto;} #debugvar td{border:solid 1px #aaa; font-size:12px;min-width:300px; padding:2px;} #debugvar td:nth-child(odd){text-align:right;}</style>";
     print "<table id='debugvar'>\n";
-    print "<caption>{$設定['現在使用中のテンプレート']} 使用できる変数<caption>";
+    print "<caption>使用できる変数<caption>";
 
     foreach($設定 as $key => $value){
         if(is_scalar($value)) {
@@ -831,7 +831,7 @@ function 開発用の設定(){
     global $設定;
 
     //開発環境なら
-    if($_SERVER['HTTP_HOST'] == '127.0.0.1'){
+    if($_SERVER['SERVER_SOFTWARE'] == 'PHP 7.0.0 Development Server'){
         error_reporting(E_ALL ^ E_NOTICE);
         ini_set('display_errors', 1);
 
