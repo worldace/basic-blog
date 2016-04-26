@@ -182,15 +182,6 @@ pre .pre-title{
     line-height: 1;
     cursor: pointer;
 }
-.st0 { color:#ff00ff; }/* 文字列 コードハイライト用 */
-.st_h{ color:#ff00ff; }
-.kw3 { color:red; }/* 関数 コードハイライト用 */
-.kw1 { color:blue; }/* 宣言 コードハイライト用 */
-.kw2 { color:blue; }
-.kw4 { color:blue; }
-.co1 { color:#008000; }/* コメント コードハイライト用 */
-.co2 { color:#008000; }
-.coMULTI{ color:#008000; }
 
 /*** blockquote ***/
 blockquote {
