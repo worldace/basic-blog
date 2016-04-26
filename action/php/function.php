@@ -14,7 +14,7 @@ function 部品(){
     $引数   = func_get_args();
     $部品名 = array_shift($引数);
 
-    include_once("{$設定['ディレクトリ']}/action/parts/{$部品名}.php");
+    include_once("{$設定['actionディレクトリ']}/parts/{$部品名}.php");
     $html = call_user_func_array("${部品名}_parts", $引数);
     
     if(!$実行記録[$部品名]){

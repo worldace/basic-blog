@@ -28,10 +28,6 @@ if($設定['URL書き換え'] == "○" and $_GET['action'] == "entry"){
     $設定['URL'] = $設定['ベースURL'] = preg_replace("/\/\d+$/", "/", $設定['URL']);
 }
 
-//ディレクトリの設定
-$設定['ディレクトリ'] = getcwd();
-$設定['actionディレクトリ'] = $設定['ディレクトリ'] . '/action';
-
 //デフォルトアクション
 if(!$_GET['action'] and GETなら()){
     $_GET['action'] = 'index';
