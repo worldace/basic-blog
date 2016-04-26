@@ -17,16 +17,16 @@ function 部品(){
     include_once("{$設定['ディレクトリ']}/action/parts/{$部品名}.php");
     $html = call_user_func_array("${部品名}_parts", $引数);
     
-    if($実行記録[$部品名]){
-        return $html;
-    }
-    else{
+    if(!$実行記録[$部品名]){
         $実行記録[$部品名] = true;
 
         if($css){ $css = "<style>\n{$css}\n</style>\n"; }
         if($js) { $js  = "<script>\n{$js}\n</script>\n"; }
 
         return $css . $html . $js;
+    }
+    else{
+        return $html;
     }
 }
 
