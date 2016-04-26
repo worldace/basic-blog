@@ -31,54 +31,10 @@ function 部品(){
 }
 
 
-
-function テンプレート表示($file){
-    global $設定;
-
-    $設定['現在使用中のテンプレート'] .= $file;
-
-    header("Content-Type: text/html; charset=UTF-8");
-    print テンプレート変換(file_get_contents($file), $設定);
-    exit;
-}
-
-
 function テキスト表示($str){
     header("Content-Type: text/plain; charset=UTF-8");
     print $str;
     exit;
-}
-
-
-function テンプレート変換($検索対象, $設定){
-    return preg_replace_callback('/《([^》]+)》/u',
-
-    function($match) use($設定){
-
-        $名前 = $match[1];
-        $最初の文字 = substr($名前, 0, 1);
-
-        switch($最初の文字){
-            case "&":
-                $名前 = substr($名前, 1);
-                return h($設定[$名前]);
-
-            case "%":
-                $名前 = substr($名前, 1);
-                return rawurlencode($設定[$名前]);
-
-            case "?":
-                $名前 = substr($名前, 1);
-                ob_start();
-                eval($名前 . ";");
-                return ob_get_clean();
-
-            default:
-                return $設定[$名前];
-        }
-    },
-
-    $検索対象);
 }
 
 
@@ -99,7 +55,7 @@ function エラー($str){
     }
     else {
         $設定['エラー'] = $str;
-        テンプレート表示("{$設定['テンプレート']}/error.html");
+        include_once("{$設定['actionディレクトリ']}/php/error.php");
     }
     exit;
 }
@@ -812,7 +768,7 @@ function 開発用の設定(){
     global $設定;
 
     //開発環境なら
-    if($_SERVER['SERVER_SOFTWARE'] == 'PHP 7.0.0 Development Server'){
+    if($_SERVER['SERVER_SOFTWARE'] == 'PHP 7.0.0 Development Server' and $_SERVER['HTTP_HOST'] == '127.0.0.1'){
         error_reporting(E_ALL ^ E_NOTICE);
         ini_set('display_errors', 1);
 
