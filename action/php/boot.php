@@ -5,14 +5,12 @@
 // 呼び出し元: ../../index.php
 //======================================================
 
+//タイムゾーン
+date_default_timezone_set('Asia/Tokyo');
 
 //エラーの方針
 error_reporting(0);
 ini_set('display_errors', 0);
-
-//タイムゾーン
-date_default_timezone_set('Asia/Tokyo');
-
 
 //index.phpのURLを求める。index.phpがない場合とある場合がある
 $設定['URL'] = URL作成();
